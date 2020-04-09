@@ -1,1 +1,1 @@
-# chicago-bulls-team-assessment
+# chicago-bulls-team-selection
