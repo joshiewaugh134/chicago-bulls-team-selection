@@ -1,0 +1,17 @@
+---
+title: "chicago-bulls-team-assessment"
+author: "Joshua Waugh"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,
+                      warning = FALSE)
+
+```
+
+## Purpose of analysis
+
+In the 2018-19 season, the Chicago Bulls placed 27th out of 30 in the NBA competition. An analysis has been conducted to determine the best starting 5 players that will play for the new season.
+
