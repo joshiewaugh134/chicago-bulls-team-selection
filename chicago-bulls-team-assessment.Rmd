@@ -45,6 +45,18 @@ A clear relationship was determined showing that as one variable increases, so d
 
 ![Figure 2. ATTOVR vs Salary/1000](figs/pg_data_ATTOVR_vs_Sal.jpeg){width=450px}
 
+#### Shooting Guard
+
+A graph was created to determine the break down of points per game and how they were scored, particularly their effectiveness of 3-Point Field Goals
+
+![Figure 3. 3-Point Field Goals vs Points per Game](figs/sg_X3P_vs_PTSpg.jpeg){width=450px}
+
+This graph shows that regardless of each players' accuracy, the points did not convert into high amount of points per game. Thus, the filtering system observed above average players for Field Goal Percentage, 3-Point Goal Percentage, and Points per game.
+
+Further from this, players with above average scores for total rebounds was filtered, filtering the top 21 Shooting Guards of the league.
+
+Finally, the value of these players was once again established by using the metric of `Salary/1000`. 
+
 ### Recommendations for the team
 
 
