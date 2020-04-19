@@ -35,7 +35,15 @@ The final step was to then determine which player was the top player, and then c
 
 ### Results of analysis
 
+#### Point Guard
 
+A graph was created to determine the relationship between `AST` and `TOV` variables. 
+
+![Figure 1. Assists vs Turnover](figs/pg_data_ATTOVR_unfiltered.jpeg){width=450px}      
+
+A clear relationship was determined showing that as one variable increases, so does the other. Another graph was then created once the filtering process was completed, leaving the top 9 point guards, to determine what their Assist-to-TUrnover Rate was in relation to their Salary.
+
+![Figure 2. ATTOVR vs Salary/1000](figs/pg_data_ATTOVR_vs_Sal.jpeg){width=450px}
 
 ### Recommendations for the team
 
