@@ -32,3 +32,16 @@ The second step was to determine the key metrics that are essential for each pos
 The third step was to filter the main data set according to players. and key metrics, narrowing down the dataset to the best performing players in these metrics, thus being the best in their positions. Prior to the filtering process, graphs were also created to determine the importance of these metrics in the data set, and identifying any trends through the data and positions.
 
 The final step was to then determine which player was the top player, and then compare them to the players of that position in the top 5 teams in the 2018-19 season to compare their statistics.
+
+### Results of analysis
+
+
+
+### Recommendations for the team
+
+
+
+### References
+
+1. Basketball, Kingaroy. Basketball positions. Kingaroy: Kingaroy Amateur Basketball Association; n.d.
+2. Academy, BBC Sport. Basketball players [Internet]. London: BBC; 2020 [cited 2020 April 19]. Available from: http://news.bbc.co.uk/sportacademy/bsp/hi/basketball/rules/players/html/default.stm
