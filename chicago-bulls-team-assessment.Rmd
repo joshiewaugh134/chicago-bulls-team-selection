@@ -57,6 +57,38 @@ Further from this, players with above average scores for total rebounds was filt
 
 Finally, the value of these players was once again established by using the metric of `Salary/1000`. 
 
+#### Small Forward
+
+A graph showing the relationship between 3-Point Field Goals and the number of points scored during the game after the data set was filtered to only above average players in the assists category.
+
+![Figure 4. 3-Point Field Goals vs Points over Season](figs/sf_PTS_vs_X3P.jpeg){width=450px}
+
+The relationship in this graph identified that this variable doesn't accurately represent shooting values, due to the players falling on the lower side of the graph, suggesting that or Field Goals as a general variable is a better scoring indicator for this position. This filtering process narrowed the data set down to the Top 10 Small Forwards in the game. 
+
+#### Power Forward
+
+A graph showing the relationship between the number of rebounds per game and the number of games was created, as well as a graph that showed a relationship between 3-Point goals and Points scored over the season.
+
+![Figure 5. Rebounds per game vs Games played throughout season](figs/pf_G_vs_RBpg.jpeg) {width=450px}
+
+![Figure 6. 3-Point Field Goals vs Points over Season](figs/sf_PTS_vs_X3P.jpeg) {width=450px}
+
+The rebounds graph indicated a trend that indicates that as more games are played, the rebounds per game also increases. Also, the trend for the Field Goals indicated the same trend as previous iterations, thus Field Goals as a general variable was used instead.
+
+After filtering for above average players in this position, the top 16 players were identified for selection.
+
+#### Centre
+
+Finally, for the centre position, the metric of Field Goals over the season was used to identify key shooters in the centre position. Alongside this, Total Rebounds and Blocks over the season were used to filter the best centres, leaving the data set with just 6 players. 3 graphs were created to compare the 6 players, and determine the best suited candidate, with each variable being compared to number of games over the season
+
+![Figure 7. Blocks per game vs Games played throughout season](figs/C_BLK_vs_G.jpeg) {width=450px}
+
+![Figure 8. Rebounds per game vs Games played throughout season](figs/C_TRB_vs_G.jpeg) {width=450px}
+
+![Figure 9. 2-Point Goal Percentage per game vs Games played throughout season](figs/C_X2Pp_vs_G.jpeg) {width=450px}
+
+These graphs identified 3 potential players that had consistently good results in these metrics: `Steven Adams`, `Jarret Allen`, and `Hassan Whiteside`. The final step of this process were to compare these players results to their salary to determine which player is the best value for money, based on what statistics they bring to the team.
+
 ### Recommendations for the team
 
 
