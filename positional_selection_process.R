@@ -49,6 +49,7 @@ best_ATTOVR <- best_ATTOVR %>%      #Compared Darren COllison to players in team
 pairs(formula = ~ PTS_per_game + FG_per_game + X2P_per_game + RB_per_game, 
       data = pf_data) #Multicollinearity test
 
+pf_fit <- lm(PTS_per_game ~ FG_per_game + X2P_per_game + RB_per_game, data = pf_data)
 tidy(pf_fit, conf.int = TRUE) #Multi-Linear Regression vs PTS per game
 
 car::avPlots(pf_fit) #Linearity
@@ -57,7 +58,7 @@ car::vif(pf_fit) #Variance inflation factor
 
 ##Linear Regression - PF
 
-source(local = TRUE, "funs/linear_regression.R") #Regression for Scoring
+source(local = TRUE, "funs/linear_regression_scoring.R") #contains Linear Regression for Shooting
 
 
 
