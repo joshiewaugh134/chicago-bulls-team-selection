@@ -59,3 +59,34 @@ fitted <- predict(fit)
 ggplot(data = NULL, aes(x = fitted, y = res)) +
   geom_point(colour = "dodgerblue") +
   geom_smooth(se = FALSE, colour = "magenta") #Homoscedasticity
+
+#ATTOVR Linear Regression
+
+ATTOVRplot <- ggplot(pg_data, aes(x = AST, y = TOV)) +
+  geom_point(colour = "dodgerblue") +
+  geom_smooth(method = "lm", colour = "magenta") 
+
+ATTOVRfit <- lm(ATTOVR ~ AST + TOV, data = pg_data)
+tidy(ATTOVRfit, conf.int = TRUE)
+
+exp_ATTOVR_per_game <- predict(ATTOVRfit)
+
+std_ATTOVR_res <- rstandard(ATTOVRfit)
+ATTOVR_points <- 1:length(std_ATTOVR_res)
+ATTOVR_res_labels <- if_else(abs(std_ATTOVR_res) >= 2.5, paste(ATTOVR_points), "")
+
+ggplot(data = NULL, aes(x = ATTOVR_points, y = std_ATTOVR_res)) +
+  geom_point() +
+  geom_text(aes(label = ATTOVR_res_labels), nudge_y = 0.3) +
+  ylim(c(-4,4)) +
+  geom_hline(yintercept = c(-3,3), colour = "red", linetype = "dashed")
+
+ATTOVRplot +
+  geom_text(aes(label = ATTOVR_res_labels), nudge_x = 0.02)
+
+ATTOVR_hats <- hatvalues(ATTOVRfit)
+ATTOVR_hat_labels <- if_else(ATTOVR_hats >= 0.01, paste(ATTOVR_points), "")
+
+ggplot(data = NULL, aes(x = ATTOVR_points, y = ATTOVR_hats)) +
+  geom_point() + 
+  geom_text(aes(label = ATTOVR_hat_labels), nudge_y = 0.0005)
