@@ -10,13 +10,13 @@ pg_data <- pg_data[is.finite(pg_data$ATTOVR), ]
 
 source(local = TRUE, "funs/pg_attovr_functions.R")
 
-pg_data <- mutate(pg_data,
-                  ATTOVR_category = if_else(condition = ATTOVR < mean_ATTOVR,
-                                            true = "below average", false = "above average"),
-                  mean_AST_category = if_else(condition = AST < mean_AST,
-                                              true = "below average", false = "above average"),
-                  mean_TOV_category = if_else(condition = TOV < mean_TOV,
-                                              true = "below average", false = "above average")) %>%
+pg_data <- pg_data %>%
+  mutate(ATTOVR_category = if_else(condition = ATTOVR < mean_ATTOVR,
+                                   true = "below average", false = "above average"),
+         mean_AST_category = if_else(condition = AST < mean_AST,
+                                     true = "below average", false = "above average"),
+         mean_TOV_category = if_else(condition = TOV < mean_TOV,
+                                     true = "below average", false = "above average")) %>%
   select(Player:G, MP, AST, TOV, ATTOVR, Salary)                         
 
 #Shooting Guard (SG)
