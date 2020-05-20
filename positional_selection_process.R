@@ -253,3 +253,21 @@ best_c_RBX2P <- best_c_RBX2P %>%      #Compared ____ to players in teams found a
   rbind(montrezl_harrell) %>%
   arrange(desc(RBX2P))
 
+#Selected Team -----
+
+selected_team <- ind_stats %>%
+  filter(Player %in% c("Darren Collison", "Donovan Mitchell", "Kevin Durant", "Kyle Kuzma",
+                       "Montrezl Harrell")) %>%
+  select(Player:G, FG:X2Pp, FT:FTp, ORB:AST, BLK:TOV, PTS, PTS_per_game:Salary) %>%
+  mutate(ATTOVR = (AST/TOV),
+         PTS_A = ((X3PA*3)+(X2PA*2)+(FTA*1)),
+         PTS_P = (PTS/PTS_A),
+         RBX2P = (X2P/TRB),
+         RPG = (TRB/G),
+         AST_per_game = (AST/G),
+         PTS_per_1000_dollars = (PTS/(Salary/1000))) %>%
+  mutate_at(vars(ATTOVR, PTS_P, RBX2P, RPG, AST_per_game, PTS_per_1000_dollars), funs(round(., 3)))
+
+selected_team <- selected_team %>%
+  select(Player:G, FG:FTp, ORB:TRB, RBX2P, RPG, AST, AST_per_game, TOV, ATTOVR, BLK, PTS, PTS_A:PTS_P, 
+         PTS_per_game:Salary, PTS_per_1000_dollars)
