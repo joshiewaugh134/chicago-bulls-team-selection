@@ -58,65 +58,59 @@ car::vif(pf_fit) #Variance inflation factor
 
 ##Linear Regression - PF
 
-RB_to_X2P <- pf_data %>%
-  select(Player:G, FG, FGp, X2P, X2Pp, X3P, X3Pp, RB_per_game, X2P_per_game)
+source(local = TRUE, "funs/linear_regression_RB_to_X2P.R") #contains Linear Regression for RB/X2P
 
-RB_fit <- lm(X2P_per_game ~ RB_per_game, data = pf_data)
-tidy(RB_fit, conf.int = TRUE)
+##Positional Analysis
 
-RB_plot <- ggplot(pf_data, aes(x = X2P_per_game, y = RB_per_game)) +
-  geom_point(colour = "black") +
-  geom_smooth(method = "lm", colour = "red") 
-
-RB_std_res <- rstandard(RB_fit)      #Detecting Outliers
-RB_points <- 1:length(RB_std_res)
-
-ggplot(data = NULL, aes(x = RB_points, y = RB_std_res)) +
+pf_data %>%
+  ggplot(mapping = aes(x = G, y = RB_per_game)) + 
   geom_point() +
-  ylim(c(-4,4)) +
-  geom_hline(yintercept = c(-3,3), colour = "red", linetype = "dashed")
+  geom_smooth(method = "lm", colour = "red")
 
-RB_res_labels <- if_else(abs(RB_std_res) >= 2, paste(RB_points), "")
+pf_data <- pf_data %>%
+  filter(RPG_z >= 0)
 
-RB_plot +
-  geom_text(aes(label = RB_res_labels), nudge_x = 0.002) #Outliers
+pf_data %>%
+  ggplot(mapping = aes(x = PTS_per_game, y = X2P_per_game)) + 
+  geom_point() +
+  geom_smooth(method = "lm", colour = "red")
 
-RB_hats <- hatvalues(RB_fit)              
+pf_data <- pf_data %>%
+  filter(X2Pp_z >= 0)
 
-ggplot(data = NULL, aes(x = RB_points, y = RB_hats)) +
+pf_data <- pf_data %>%
+  mutate(RBX2P = (X2P/TRB),
+         RBX2P_z = (RBX2P - mean(RBX2P)) / sd(RBX2P)) %>%
+  mutate_at(vars(RBX2P_z) , funs(round(., 3))) %>%
+  filter(RBX2P_z >= 0)  %>%
+  arrange(desc(RBX2P))
+
+pf_data %>%               #Shows spread of data according to ATTOVR and Salary to indicate value. ie. how high ATTOV for each $1000
+  ggplot(mapping = aes(x = RBX2P, y = (Salary/1000), colour = Player)) + 
   geom_point()
 
-RB_hat_labels <- if_else(RB_hats >= 0.05, paste(RB_points), "")
+#Kyle Kuzma was chosen, and compared to Top 5 in that position
 
-ggplot(data = NULL, aes(x = RB_points, y = RB_hats)) +
-  geom_point() + 
-  geom_text(aes(label = RB_hat_labels), nudge_y = 0.0005) #Leverage Points
+pf_team_stats <- team_stats2 %>%
+  select(Team:G, FGp, X2P, TRB) %>%
+  mutate(RPG = (TRB/G),
+         RBX2P = (X2P/TRB)) %>%
+  mutate_at(vars(RPG, RBX2P), funs(round(., 3))) %>%
+  arrange(desc(RBX2P))
 
-RB_plot +
-  geom_text(aes(label = RB_hat_labels), nudge_x = 0.002) #Leverage Points
+best_RBX2P <- ind_stats %>%           #Table shows PF players in top 5 teams for RBX2P and compared to ATTOVR of Darren Collison
+  select(Player:G, X2P, TRB, Salary) %>%
+  filter(Pos == "PF", Tm %in% c("PHO", "IND", "WAS", "SAS", "CHI")) %>%
+  mutate(RBX2P = (X2P/TRB)) %>%
+  mutate_at(vars(RBX2P), funs(round(., 3)))
 
-RB_cook <- cooks.distance(RB_fit)           
+kyle_kuzma <- pf_data %>%    #Choose 1 with Sal Remaining
+  select(Player:G, X2P, TRB, Salary, RBX2P) %>%
+  filter(Player == "Kyle Kuzma")
 
-ggplot(data = NULL, aes(x = RB_points, y = RB_cook)) +
-  geom_point() #Influence
-
-RB_cook_labels <- if_else(RB_cook >= 0.20, paste(RB_points), "")
-
-ggplot(data = NULL, aes(x = RB_points, y = RB_cook)) +
-  geom_point() +
-  geom_text(aes(label = RB_cook_labels), nudge_y = 0.001) #Influence
-
-RB_plot +
-  geom_text(aes(label = RB_cook_labels), nudge_x = 0.002)
-
-RB_res <- residuals(RB_fit)
-RB_fitted <- predict(RB_fit)
-
-ggplot(data = NULL, aes(x = RB_fitted, y = RB_res)) +
-  geom_point(colour = "black") +
-  geom_smooth(se = FALSE, colour = "red") #Homoscedasticity
+best_RBX2P <- best_RBX2P %>%      #Compared ____ to players in teams found above
+  rbind(kyle_kuzma) %>%
+  arrange(desc(RBX2P))
 
 #Centre Selection -----
-
-
 

@@ -48,11 +48,11 @@ pf_data <- ind_stats %>%
   filter(Pos %in% c("PF", "PF, SF", "PF, SG", "C, PF")) %>%
   mutate(RB_per_game = TRB/G, 
          RPG_z = (RB_per_game - mean(RB_per_game)) / sd(RB_per_game),
-         FGp_z = (FGp - mean(FGp)) / sd(FGp),
+         X2Pp_z = (X2Pp - mean(X2Pp)) / sd(X2Pp),
          PTS_per_game = (PTS/G),
          FG_per_game = (FG/G),
          X2P_per_game = (X2P/G)) %>%
-  mutate_at(vars(RB_per_game, PTS_per_game, FGp_z, RPG_z, FG_per_game, X2P_per_game), funs(round(., 3)))
+  mutate_at(vars(RB_per_game, PTS_per_game, X2Pp_z, RPG_z, FG_per_game, X2P_per_game), funs(round(., 3)))
 
 #Centre (C) -----
 
