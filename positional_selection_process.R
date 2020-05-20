@@ -98,19 +98,63 @@ pf_team_stats <- team_stats2 %>%
   mutate_at(vars(RPG, RBX2P), funs(round(., 3))) %>%
   arrange(desc(RBX2P))
 
-best_RBX2P <- ind_stats %>%           #Table shows PF players in top 5 teams for RBX2P and compared to ATTOVR of Darren Collison
+best_pf_RBX2P <- ind_stats %>%           #Table shows PF players in top 5 teams for RBX2P and compared to ATTOVR of Darren Collison
   select(Player:G, X2P, TRB, Salary) %>%
   filter(Pos == "PF", Tm %in% c("PHO", "IND", "WAS", "SAS", "CHI")) %>%
   mutate(RBX2P = (X2P/TRB)) %>%
   mutate_at(vars(RBX2P), funs(round(., 3)))
 
-kyle_kuzma <- pf_data %>%    #Choose 1 with Sal Remaining
-  select(Player:G, X2P, TRB, Salary, RBX2P) %>%
-  filter(Player == "Kyle Kuzma")
-
-best_RBX2P <- best_RBX2P %>%      #Compared ____ to players in teams found above
+best_pf_RBX2P <- best_pf_RBX2P %>%      #Compared ____ to players in teams found above
   rbind(kyle_kuzma) %>%
   arrange(desc(RBX2P))
 
 #Centre Selection -----
+
+##Linear Regression - PF
+
+source(local = TRUE, "funs/linear_regression_RB_to_X2P.R") #contains Linear Regression for RB/X2P
+
+##Positional Analysis
+
+c_data <- c_data %>%
+  filter(BLK_z >= 0)
+
+c_data %>%
+  ggplot(mapping = aes(x = PTS, y = X2P)) + 
+  geom_point() +
+  geom_smooth(method = "lm", colour = "red")
+
+c_data <- c_data %>%
+  mutate(RBX2P = (X2P/TRB),
+         RBX2P_z = (RBX2P - mean(RBX2P)) / sd(RBX2P)) %>%
+  mutate_at(vars(RBX2P_z) , funs(round(., 3))) %>%
+  filter(RBX2P_z >= 0)  %>%
+  arrange(desc(RBX2P))
+
+c_data %>%               #Shows spread of data according to ATTOVR and Salary to indicate value. ie. how high ATTOV for each $1000
+  ggplot(mapping = aes(x = RBX2P, y = (Salary/1000), colour = Player)) + 
+  geom_point()
+
+##Montrezi Harrell was chosen, and compared to Top 5 in that position
+
+c_team_stats <- team_stats2 %>%
+  select(Team:G, FGp, X2P, TRB) %>%
+  mutate(RPG = (TRB/G),
+         RBX2P = (X2P/TRB)) %>%
+  mutate_at(vars(RPG, RBX2P), funs(round(., 3))) %>%
+  arrange(desc(RBX2P))
+
+best_c_RBX2P <- ind_stats %>%           #Table shows PF players in top 5 teams for RBX2P and compared to ATTOVR of Darren Collison
+  select(Player:G, X2P, TRB, Salary) %>%
+  filter(Pos == "C", Tm %in% c("PHO", "IND", "WAS", "SAS", "CHI")) %>%
+  mutate(RBX2P = (X2P/TRB)) %>%
+  mutate_at(vars(RBX2P), funs(round(., 3)))
+
+montrezl_harrell <- c_data %>%    
+  select(Player:G, X2P, TRB, Salary, RBX2P) %>%
+  filter(Player == "Montrezl Harrell")
+
+best_c_RBX2P <- best_c_RBX2P %>%      #Compared ____ to players in teams found above
+  rbind(montrezl_harrell) %>%
+  arrange(desc(RBX2P))
 
