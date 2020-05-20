@@ -15,14 +15,13 @@ ind_stats <- rename(ind_stats,
 salaries <- salaries %>%
   rename(player_id = 'ï..player_id', Player = 'player_name', Salary = 'salary') %>%
   select(Player:Salary)
-            
+
 salaries[,c("X","X.1","X.2", "X.3")] <- list(NULL)
 
 team_stats2 <- team_stats2 %>%
   rename(FGp = 'FG.', X3Pp = 'X3P.', X2Pp = 'X2P.', FTp = 'FT.', Rk = 'ï..Rk') %>%
   mutate(ATTOVR = (AST/TOV)) %>%
   mutate_at(vars(ATTOVR), funs(round(., 3)))
-  
 
 #Tidying ind_stats data by combining duplicates of players by team or position into same row and adding variables -----
 

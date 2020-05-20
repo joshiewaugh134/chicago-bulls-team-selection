@@ -22,14 +22,18 @@ pg_data <- pg_data %>%
 #Shooting Guard (SG) -----
 
 sg_data <- ind_stats %>%
-  select(Player:G, MP, FG:X3Pp, eFGp, AST, ORB:TRB, PTS, ORB_z, DRB_z, TRB_z, 
+  select(Player:G, MP, FG:X2Pp, FT:FTp, AST, ORB:TRB, PTS, ORB_z, DRB_z, TRB_z, 
          AST_z, Salary) %>%
   filter(Pos %in% c("SG", "SF, SG", "PF, SG")) %>%
-  mutate(PTS_per_1000_dollars = (PTS/(Salary/1000)),
+  mutate(PTS_A = ((X3PA*3)+(X2PA*2)+(FTA*1)),
+         PTS_P = (PTS/PTS_A),
+         PTS_per_1000_dollars = (PTS/(Salary/1000)),
          PTS_per_game = (PTS/G),
          FGp_z = (FGp - mean(FGp)) / sd(FGp),
          X3Pp_z = (X3Pp - mean(X3Pp)) / sd(X3Pp)) %>%
-  mutate_at(vars(PTS_per_1000_dollars, PTS_per_game, FGp_z, X3Pp_z), funs(round(., 3)))
+  mutate_at(vars(PTS_P, PTS_per_1000_dollars, PTS_per_game, FGp_z, X3Pp_z), funs(round(., 3)))
+
+#
 
 #Shot Forward (SF) -----
 

@@ -36,7 +36,65 @@ best_ATTOVR <- best_ATTOVR %>%      #Compared Darren COllison to players in team
 
 #Shooting Guard Selection -----
 
+sg_data <- sg_data %>%
+  select(Player:FTp, PTS, PTS_A:PTS_per_game, AST, ORB:TRB, ORB_z, DRB_z, TRB_z, 
+         AST_z, Salary) 
 
+sg_data %>%
+  ggplot(mapping = aes(x = PTS_P, y = FGp)) + 
+  geom_point() +
+  geom_smooth(method = "lm", colour = "red")
+
+sg_data %>%
+  ggplot(mapping = aes(x = PTS_P, y = X3Pp)) + 
+  geom_point() +
+  geom_smooth(method = "lm", colour = "red")
+
+sg_data <- sg_data %>%
+  mutate(FGp_z = (FGp - mean(FGp)) / sd(FGp),
+         X3Pp_z = (X3Pp - mean(X3Pp)) / sd(X3Pp)) %>%
+  mutate_at(vars(FGp_z, X3Pp_z), funs(round(., 3))) %>%
+  filter(FGp_z >= 0, X3Pp_z >= 0)
+
+mean_PTS_per_game <- mean(sg_data$PTS_per_game)
+
+sg_data <- sg_data %>%
+  filter(PTS_per_game >= mean_PTS_per_game, TRB_z >=0)
+
+sg_data <- arrange(sg_data, desc(PTS_per_game)) %>%
+  select(Player:G, FG:FTp, PTS, PTS_A:PTS_P, 
+         AST, TRB, PTS_per_1000_dollars:PTS_per_game, Salary)
+
+sg_data %>%               #Shows spread of data according to ATTOVR and Salary to indicate value.
+  ggplot(mapping = aes(x = PTS_per_game, y = (Salary/1000), colour = Player)) + 
+  geom_point()
+
+##Donovan Mitchell chosen due to being the most consistent player in set, and the best value pointscorer.
+
+sg_team_stats <- team_stats2 %>%
+  select(Team:G, FG:FTp, AST, TRB, PTS) %>%
+  mutate(PTS_A = ((X3PA*3)+(X2PA*2)+(FTA*1)),
+         PTS_P = (PTS/PTS_A),
+         PTS_per_game = (PTS/G)) %>%
+  mutate_at(vars(PTS_P, PTS_per_game), funs(round(., 3))) %>%
+  arrange(desc(PTS_per_game))
+
+best_sg_PTS_per_game <- ind_stats %>%
+  select(Player:G, FG:X2Pp, FT:FTp, PTS, AST, TRB, Salary) %>%
+  filter(Pos == "SG", Tm %in% c("MIL", "GSW", "NOP", "PHI", "LAC")) %>%
+  mutate(PTS_per_1000_dollars = (PTS/(Salary/1000)),
+         PTS_A = ((X3PA*3)+(X2PA*2)+(FTA*1)),
+         PTS_P = (PTS/PTS_A),
+         PTS_per_game = (PTS/G)) %>%
+  mutate_at(vars(PTS_per_1000_dollars, PTS_P, PTS_per_game), funs(round(., 3)))
+
+donovan_mitchell <- sg_data %>%
+  select(Player:Salary) %>%
+  filter(Player == "Donovan Mitchell")
+
+best_sg_PTS_per_game <- best_sg_PTS_per_game %>%      #Compared Donovan Mitchell to players in teams found above
+  rbind(donovan_mitchell) %>%
+  arrange(desc(PTS_per_game))
 
 #Small Forward Selection -----
 
@@ -68,6 +126,10 @@ sf_team_stats <- team_stats2 %>%
          RBX2P = (X2P/TRB)) %>%
   mutate_at(vars(AST_per_game, RBX2P) , funs(round(., 3))) %>%
   arrange(desc(AST_per_game))
+
+kevin_durant <- sf_data %>%    
+  select(Player:G, X3P:X3Pp, X2P:X2Pp, AST, TRB, Salary, RBX2P) %>%
+  filter(Player == "Montrezl Harrell")
 
 best_sf_ASTPG <- ind_stats %>%           #Table shows SF players in top 5 teams for AST/G and compared to Kevin Durant
   select(Player:G, X3P:X3Pp, X2P:X2Pp, AST, TRB, Salary) %>%
@@ -139,17 +201,15 @@ best_pf_RBX2P <- ind_stats %>%           #Table shows PF players in top 5 teams 
   mutate(RBX2P = (X2P/TRB)) %>%
   mutate_at(vars(RBX2P), funs(round(., 3)))
 
+kyle_kuzma <- pf_data %>%    
+  select(Player:G, X2P, TRB, Salary, RBX2P) %>%
+  filter(Player == "Kyle Kuzma")
+
 best_pf_RBX2P <- best_pf_RBX2P %>%      #Compared ____ to players in teams found above
   rbind(kyle_kuzma) %>%
   arrange(desc(RBX2P))
 
 #Centre Selection -----
-
-##Linear Regression - PF
-
-source(local = TRUE, "funs/linear_regression_RB_to_X2P.R") #contains Linear Regression for RB/X2P
-
-##Positional Analysis
 
 c_data <- c_data %>%
   filter(BLK_z >= 0)
