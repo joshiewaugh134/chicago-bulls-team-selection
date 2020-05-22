@@ -6,14 +6,14 @@ pg_data %>%                                 #Observation of relationship of AST 
   geom_smooth(method = "lm", colour = "red")
 
 pg_data <- pg_data %>%                      #Selects above average performers in AST, TOV and ATTOV
-  filter(ATTOVR >= mean_ATTOVR, AST >= mean_AST, TOV >= mean_TOV) %>%
+  filter(ATTOVR >= mean_ATTOVR, AST >= mean_AST, TOV <= mean_TOV) %>%
   arrange(desc(ATTOVR))
 
 pg_data %>%               #Shows spread of data according to ATTOVR and Salary to indicate value.
   ggplot(mapping = aes(x = ATTOVR, y = (Salary/1000), colour = Player)) + 
   geom_point()
 
-##Darren Collison chosen due to being a low price, and the highest ATTOVR showing high value
+## Monte Morris chosen due to being a low price, and the highest ATTOVR showing high value
 
 pg_team_stats <- team_stats2 %>%       #Identifying teams with highest ATTOVR in NBA
   select(Team:G, AST, TOV) %>%
@@ -21,17 +21,17 @@ pg_team_stats <- team_stats2 %>%       #Identifying teams with highest ATTOVR in
   mutate_at(vars(ATTOVR), funs(round(., 3)))
 
 best_ATTOVR <- ind_stats %>%           #Table shows PG players in top 5 teams for ATTOVR and compared to ATTOVR of Darren Collison
-  select(Player:G, AST, TOV, Salary) %>%
+  select(Player:G, AST, TOV, PTS, PTS_per_game, Salary) %>%
   filter(Pos == "PG", Tm %in% c("GSW", "BOS", "DEN", "SAS", "ORL")) %>%
   mutate(ATTOVR = (AST/TOV)) %>%
   mutate_at(vars(ATTOVR), funs(round(., 3)))
 
-darren_collison <- pg_data %>%
+monte_morris <- pg_data %>%
   select(Player:G, AST:ATTOVR) %>%
-  filter(Player == "Darren Collison")
+  filter(Player == "Monte Morris")
 
-best_ATTOVR <- best_ATTOVR %>%      #Compared Darren COllison to players in teams found above
-  rbind(darren_collison) %>%
+best_ATTOVR <- best_ATTOVR %>%      # Compared Monte Morris to players in teams found above
+  rbind(monte_morris) %>%
   arrange(desc(ATTOVR))
 
 #Shooting Guard Selection -----
@@ -98,7 +98,7 @@ best_sg_PTS_per_game <- best_sg_PTS_per_game %>%      #Compared Donovan Mitchell
 
 #Small Forward Selection -----
 
-source(local = TRUE, "funs/linear_regression_scoring.R") #contains Linear Regression for Shooting
+source(local = TRUE, "funs/linear_regression_scoring_process.R") #contains Linear Regression for Shooting
 
 sf_data <- sf_data %>%
   mutate(RBX2P = (X2P/TRB),
@@ -147,7 +147,7 @@ pairs(formula = ~ PTS_per_game + FG_per_game + X2P_per_game + RB_per_game,
       data = pf_data) #Multicollinearity test
 
 pf_fit <- lm(PTS_per_game ~ FG_per_game + X2P_per_game + RB_per_game, data = pf_data)
-tidy(pf_fit, conf.int = TRUE) #Multi-Linear Regression vs PTS per game
+broom::tidy(pf_fit, conf.int = TRUE) #Multi-Linear Regression vs PTS per game
 
 car::avPlots(pf_fit) #Linearity
 
@@ -256,7 +256,7 @@ best_c_RBX2P <- best_c_RBX2P %>%      #Compared ____ to players in teams found a
 #Selected Team -----
 
 selected_team <- ind_stats %>%
-  filter(Player %in% c("Darren Collison", "Donovan Mitchell", "Kevin Durant", "Kyle Kuzma",
+  filter(Player %in% c("Monte Morris", "Donovan Mitchell", "Kevin Durant", "Kyle Kuzma",
                        "Montrezl Harrell")) %>%
   select(Player:G, FG:X2Pp, FT:FTp, ORB:AST, BLK:TOV, PTS, PTS_per_game:Salary) %>%
   mutate(ATTOVR = (AST/TOV),

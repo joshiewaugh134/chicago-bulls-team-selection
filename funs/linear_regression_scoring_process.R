@@ -1,5 +1,3 @@
-library(broom)
-
 #Multi Linear Regression - Scoring -----
 
 scoring <- ind_stats %>%
@@ -7,14 +5,18 @@ scoring <- ind_stats %>%
   mutate(
     FG_per_game = (FG/G),
     X2P_per_game = (X2P/G),
-    X3P_per_game = (X3P/G)) %>%
+    X3P_per_game = (X3P/G),
+    PTS_per_game) %>%
   mutate_at(vars(FG_per_game, X2P_per_game, X3P_per_game), funs(round(., 3)))
 
-pairs(formula = ~ PTS_per_game + FG_per_game + X2P_per_game + X3P_per_game, 
-      data = scoring) #Multicollinearity test showed X2P was showed strongest trend for PTS 
+scoring_dat <- select(scoring, PTS_per_game, X2P_per_game, X3P_per_game)
+
+pairs(scoring_dat,            #Multicollinearity test showed X2P was showed strongest trend for PTS 
+      labels = c("Points per game", "2-Point Goals per game", "3-Point Goals per game"),
+      main = "Multilinear Regression about how points are scored in a game")
 
 fit <- lm(PTS_per_game ~ X2P_per_game + X3P_per_game, data = scoring)
-tidy(fit, conf.int = TRUE) #Multi-Linear Regression
+broom::tidy(fit, conf.int = TRUE) #Multi-Linear Regression
 
 car::avPlots(fit) #Linearity
 

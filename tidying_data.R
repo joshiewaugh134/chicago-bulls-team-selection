@@ -5,6 +5,7 @@ library(tidyverse)
 ind_stats <- read.csv("data/raw/2018-19_nba_player_statistics.csv")
 salaries <- read.csv("data/raw/2018-19_nba_player-salaries.csv")
 team_stats1 <- read.csv("data/raw/2018-19_nba_team_statistics_1.csv")
+team_stats2 <- read.csv("data/raw/2018-19_nba_team_statistics_2.csv")
 
 #Renaming columns in data files --------
 
@@ -18,10 +19,23 @@ salaries <- salaries %>%
 
 salaries[,c("X","X.1","X.2", "X.3")] <- list(NULL)
 
+team_stats1 <- team_stats1 %>%
+  rename(Rk = 'ï..Rk', TSp = 'TS.', eFGp = 'eFG.', TOVp = 'TOV.', ORBp = 'ORB.', DRBp = 'DRB.')
+
+team_stats1[,c("X","X.1","X.2")] <- list(NULL)
+
+team_short <- data.frame("TmShort" = c("MIL", "GSW", "NOP", "PHI", "LAC", "POR", "OKC", "TOR", "SAC", "WAS", "HOU", "ATL",
+                                       "MIN", "BOS", "BRK", "LAL", "UTA", "SAS", "CHO", "DEN", "DAL", "IND", "PHO", "ORL",
+                                       "DET", "MIA", "CHI", "NYK", "CLE", "MEM"))
+
+
+team_stats2 <- bind_cols(team_stats2, team_stats1[c(4:5)], team_short)  
+  
 team_stats2 <- team_stats2 %>%
   rename(FGp = 'FG.', X3Pp = 'X3P.', X2Pp = 'X2P.', FTp = 'FT.', Rk = 'ï..Rk') %>%
   mutate(ATTOVR = (AST/TOV)) %>%
-  mutate_at(vars(ATTOVR), funs(round(., 3)))
+  mutate_at(vars(ATTOVR), funs(round(., 3))) %>%
+  select(Rk:Team, TmShort, G, W:L, FG:PTS, ATTOVR)
 
 #Tidying ind_stats data by combining duplicates of players by team or position into same row and adding variables -----
 

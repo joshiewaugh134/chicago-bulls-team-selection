@@ -1,7 +1,7 @@
 #Point Guard (PG) -----
 
 pg_data <- ind_stats %>%
-  select(Player:G, MP, AST, TOV, Salary) %>%
+  select(Player:G, MP, AST, TOV, PTS, PTS_per_game, Salary) %>%
   filter(Pos  == "PG") %>%
   mutate(ATTOVR = (AST/TOV)) %>%
   mutate_at(vars(ATTOVR), funs(round(., 3)))
@@ -17,7 +17,7 @@ pg_data <- pg_data %>%
                                      true = "below average", false = "above average"),
          mean_TOV_category = if_else(condition = TOV < mean_TOV,
                                      true = "below average", false = "above average")) %>%
-  select(Player:G, MP, AST, TOV, Salary, ATTOVR)                         
+  select(Player:G, MP, AST, TOV, PTS:PTS_per_game, Salary, ATTOVR)                         
 
 #Shooting Guard (SG) -----
 

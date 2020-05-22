@@ -4,7 +4,7 @@ RB_to_X2P <- ind_stats %>%
          X2P_per_game = (X2P/G))
 
 RB_fit <- lm(X2P_per_game ~ RB_per_game, data = RB_to_X2P)
-tidy(RB_fit, conf.int = TRUE)
+broom::tidy(RB_fit, conf.int = TRUE)
 
 RB_plot <- ggplot(RB_to_X2P, aes(x = X2P_per_game, y = RB_per_game)) +
   geom_point(colour = "black") +
