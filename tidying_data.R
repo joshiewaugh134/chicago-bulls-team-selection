@@ -4,7 +4,7 @@ library(tidyverse)
 
 ind_stats <- read.csv("data/raw/2018-19_nba_player_statistics.csv")
 salaries <- read.csv("data/raw/2018-19_nba_player-salaries.csv")
-team_stats2 <- read.csv("data/raw/2018-19_nba_team_statistics_2.csv")
+team_stats1 <- read.csv("data/raw/2018-19_nba_team_statistics_1.csv")
 
 #Renaming columns in data files --------
 
