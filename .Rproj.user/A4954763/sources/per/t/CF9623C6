@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589793706859.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "37|19|46|18|\n47|20|59|0|\n60|12|72|0|\n",
+    "hash" : "3990956235",
+    "id" : "CF9623C6",
+    "lastKnownWriteTime" : 1590144956,
+    "last_content_update" : 1590144956649,
+    "path" : "~/chicago-bulls-team-assessment/chicago-bulls-team-selection/positional_filtering_process.R",
+    "project_path" : "positional_filtering_process.R",
+    "properties" : {
+        "cursorPosition" : "72,0",
+        "scrollLine" : "4",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

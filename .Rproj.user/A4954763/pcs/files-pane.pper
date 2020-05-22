@@ -1,0 +1,9 @@
+{
+    "path" : "~/chicago-bulls-team-assessment/chicago-bulls-team-selection/funs",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
