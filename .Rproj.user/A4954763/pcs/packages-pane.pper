@@ -1,7 +1,0 @@
-{
-    "installOptions" : {
-        "installDependencies" : true,
-        "installFromRepository" : true,
-        "libraryPath" : "C:/Users/joshi/Documents/chicago-bulls-team-assessment/chicago-bulls-team-selection/packrat/lib/x86_64-w64-mingw32/3.6.2"
-    }
-}
