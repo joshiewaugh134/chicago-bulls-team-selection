@@ -88,7 +88,7 @@ To filter out the best shooting guard players, there were a few metrics that wer
 
 #### Small Forward
 
-To determine the player best suited for the small forward position, the metrics that were used to refine the data were rebounds, assists and 2-Point Goals (as per results from the multilinear regression above). Another metric was also created, the Rebound-to-2-Point-Goal. This was to determine how frequently a goal was scored off a rebound. After the top 14 players were created, `Kevin Durant` was chosen to be the player we sign. Although he is lower than `LeBron James` in the Assists per game and Offensive Rebounds metrics, Durant was ranked higher than James in Total Rebounds, Defensive Rebounds and 2-Point Goals metrics. Compared to the top 5 teams, in Assists per game and Rebound-to-2-Point-Goals, he is the top player by far, showing that as `$30,000,000`, he is worth the investment for the team.
+To determine the player best suited for the small forward position, the metrics that were used to refine the data were rebounds, assists and 2-Point Goals (as per results from the multilinear regression above). Another metric was also created, the Rebound-to-2-Point-Goal (RTPG) Ratio. This was to determine how frequently a goal was scored off a rebound. After the top 14 players were created, `Kevin Durant` was chosen to be the player we sign. Although he is lower than `LeBron James` in the Assists per game and Offensive Rebounds metrics, Durant was ranked higher than James in Total Rebounds, Defensive Rebounds and 2-Point Goals metrics. Compared to the top 5 teams, in Assists per game and RTPG Ratio, he is the top player by far, showing that as `$30,000,000`, he is worth the investment for the team.
 
 #### Power Forward
 
@@ -96,8 +96,7 @@ To determine the player best suited for the small forward position, the metrics 
 
 #### Centre
 
-
-
+The selection process of the final position of centres was simple, sorting above average players in blocks, rebounds and 2-Point Goal statistics. Once again, the RTPG Ratio was also used in this position. This process left 11 potential centres to choose from. `Montrezl Harrell` excells in all scoring statistics, blocking, and the RTPG Ratio, however when it comes to Rebounds, he is about average in the data pool. Despite this, at just `$6,000,000`, he is a valuable player who should be added to our team. When this player is compared to the centres in the Top 5 teams, he ranks similarly, with high levels in scoring and RTPG Ratio, and about average in rebounds
 
 ### Recommendations for the team
 
@@ -107,7 +106,7 @@ According to the above results, the team that should be selected is:
 * Shooting Guard - Bradley Beal from the Washington Wizards at $25,434,262
 * Small Forward - Kevin Durant from the Golden State Warriors at $30,000,000
 * Power Forward - 
-* Centre - 
+* Centre - Montrezl Harrell from the LA Clippers at $6,000,000 - During training, this player should work on his ability to block to improve his statistics and become a more well rounded centre.
 
 Choosing these players will cost the club \$100,000,000 and will leave \$50,000,000 to spend on other players for the squad.
 

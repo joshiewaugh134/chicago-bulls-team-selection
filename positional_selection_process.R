@@ -253,7 +253,7 @@ best_c_RBX2P <- best_c_RBX2P %>%      #Compared ____ to players in teams found a
 #Selected Team -----
 
 selected_team <- ind_stats %>%
-  filter(Player %in% c("Monte Morris", "Donovan Mitchell", "Kevin Durant", "Kyle Kuzma",
+  filter(Player %in% c("Monte Morris", "Bradley Beal", "Kevin Durant", "Kyle Kuzma",
                        "Montrezl Harrell")) %>%
   select(Player:G, FG:X2Pp, FT:FTp, ORB:AST, BLK:TOV, PTS, PTS_per_game:Salary) %>%
   mutate(ATTOVR = (AST/TOV),
