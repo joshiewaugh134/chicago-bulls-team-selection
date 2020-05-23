@@ -24,12 +24,12 @@ The first step of the analysis was to tidy all datasets, ensuring each variable 
 The second step was to determine what key metrics were essential for each position. These were sourced by a Basketball handbook from Kingaroy Basketball (1), and further corroborated with an article from BBC Sport Academy (2). The metrics decided were as follows:
 
 1. Point Guard (PG) - Assists, Turnovers and Assist-to-Turnover Ratio
-2. Shooting Guard (SG) - Assists, Rebounds and Scoring statistics*
+2. Shooting Guard (SG) - Assists, Rebounds, Field Goal percentage, 3-Point Goal percentage and Points scored per game,
 3. Small Forward (SF) - Rebounds, Assists and Scoring statistics*
 4. Power Forward (PF) - Rebounds per game and Scoring statistics*
 5. Centre (C) - Blocks, Rebounds and Scoring statistics*
 
-*Specific scoring statistics were determined further in the analysis by the use of Multi-Linear Regression.
+*Specific scoring statistics were determined further in the analysis by the use of Multi-Linear Regression shown below.
 
 The third step of the analysis was to filter the main data set according to players, into 5 separate data sets. These sets were filtered down according to the key metrics above, to identify the best performing players in these metrics. The top players also had the most important metric compared to their Salary, showing their value, ie. For each $1000, how many 2-Point Field Goals did the player achieve.
 
@@ -37,9 +37,35 @@ The final step was to determine the player that should be signed for this season
 
 ### Results of analysis
 
+Prior to the filtering process, the relationship between certain metrics were compared to determine the eligibility for further analysis. The first relationship was how a high Assist-to-Turnover rate can affect points scored in a game. The data used for this was the team data. 
+
+<center>
+
+![](figs/team_ATTOVR_vs_PTS-per-game.jpeg){width=60%}
+
+</center>
+
+As the graph shows, there is an upward trend, suggesting that as the ATTOVR is high, that is, a high number of assists, and a low number of turnovers, the number of points scored is more likely to rise too. This is due to increased possession usually leading to points.
+
+Next was to determine what type of goals should be used for scoring statistics. A multi-linear regression was conducted comparing the two types of field goals scored in a game, and points scored in a game. After determining that 2-Point goals had the best relationship, a scatter plot was created to show the relationship.
+
+![](figs/MLR_scoring.jpeg){width=49%} ![](figs/ind_2XP-per-game_vs_PTS-per-game.jpeg){width=49%}
+
+These graphs both indicate that a large proportion of the team's points originate from 2-Point Goals.
+
+Finally, a graph was drawn to show how frequently goals were scored after rebounds, specifically 2-Point Goals. This type of goal was chosen due to the fact that the ball would most likely been obtained in the key, thus 2-Point goals being the more frequently scored points in that zone.
+
+<center>
+
+![](figs/ind_X2P-per-game_vs_RBG.jpeg){width=60%}
+
+</center>
+
+The trend indicates that as rebounds per game, so does 2-Point goals, following the above hypothesis.
+
+### Recommendations for the team
 
 #### Point Guard
-
 
 
 #### Shooting Guard
@@ -51,10 +77,6 @@ The final step was to determine the player that should be signed for this season
 
 
 #### Power Forward
-
-
-
-### Recommendations for the team
 
 
 
