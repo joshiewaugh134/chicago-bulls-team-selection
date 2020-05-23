@@ -13,7 +13,7 @@ scoring_dat <- select(scoring, PTS_per_game, X2P_per_game, X3P_per_game)
 
 pairs(scoring_dat,            #Multicollinearity test showed X2P was showed strongest trend for PTS 
       labels = c("Points per game", "2-Point Goals per game", "3-Point Goals per game"),
-      main = "Multilinear Regression about how points are scored in a game")
+      main = "Multilinear Regression of how points are scored in a game")
 
 fit <- lm(PTS_per_game ~ X2P_per_game + X3P_per_game, data = scoring)
 broom::tidy(fit, conf.int = TRUE) #Multi-Linear Regression
@@ -21,8 +21,6 @@ broom::tidy(fit, conf.int = TRUE) #Multi-Linear Regression
 car::avPlots(fit) #Linearity
 
 car::vif(fit) #Variance inflation factor
-
-
 
 #Linear Regression - Scoring -----
 

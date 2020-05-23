@@ -22,7 +22,7 @@ ind_stats %>%    # 2-Point Goals per game vs Points per game
                      breaks = seq(0, 40, by = 10)) +
   theme_classic() +
   labs(title = "Relationship between 2-Point Goals per Game and Points Scored per Game",
-       subtitle = "2-Point Goals highest indicator of Points per game",
+       subtitle = "2-Point Goals highest indicator of Points per game according to Multilinear Regression",
        caption = "Data sourced from basketball-reference.com",
        x = "2-Point Goals per Game",
        y = "Points per Game",
