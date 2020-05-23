@@ -90,7 +90,7 @@ To filter out the best shooting guard players, there were a few metrics that wer
 
 #### Small Forward
 
-
+To determine the player best suited for the small forward position, the metrics that were used to refine the data were rebounds, assists and 2-Point Goals (as per results from the multilinear regression above). Another metric was also created, the Rebound-to-2-Point-Goal. This was to determine how frequently a goal was scored off a rebound. After the top 14 players were created, `Kevin Durant` was chosen to be the player we sign. Although he is lower than `LeBron James` in the Assists per game and Offensive Rebounds metrics, Durant was ranked higher than James in Total Rebounds, Defensive Rebounds and 2-Point Goals metrics. Compared to the top 5 teams, in Assists per game and Rebound-to-2-Point-Goals, he is the top player by far, showing that as `$30,000,000`, he is worth the investment for the team.
 
 #### Power Forward
 
