@@ -78,8 +78,6 @@ Finally, a graph was drawn to show how frequently goals were scored after reboun
 
 The trend indicates that as rebounds per game, so does 2-Point goals, following the above hypothesis.
 
-### Recommendations for the team
-
 #### Point Guard
 
 After filtering point guard players by those that were above average for assists, below average for turnovers and above average for ATTOVR, the data set was narrowed to the top 9 players. Although the top player, `Tyus Jones` had the best ATTOVR, the player I recommend chosing is `Monte Morris`, due to having a high ATTOVR, and also being quite a strong point scorer, scoring almost double the number of points over the season than Jones. Although shooting is not essential for a Point Guard, it will still be helpful to have a 5th player that is a strong pointscorer. When compared to players in the top 5 teams for ATTOVR, of which is is in one, he is the #1 Point Guard, as well as rating high for AST and Points, and relative to assists, has one of the lowest turnovers. Alongside this, at `$1,349,383`, he is one of the cheapest Point Guards in both the Top 5 teams as well as the top 9 filtered point guards.
@@ -99,6 +97,19 @@ To determine the player best suited for the small forward position, the metrics 
 #### Centre
 
 
+
+
+### Recommendations for the team
+
+According to the above results, the team that should be selected is:
+
+* Point Guard - Monte Morris from the Denver Nuggets at $1,349,383
+* Shooting Guard - Bradley Beal from the Washington Wizards at $25,434,262
+* Small Forward - Kevin Durant from the Golden State Warriors at $30,000,000
+* Power Forward - 
+* Centre - 
+
+Choosing these players will cost the club \$100,000,000 and will leave \$50,000,000 to spend on other players for the squad.
 
 ### References
 
