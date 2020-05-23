@@ -24,15 +24,12 @@ best_ATTOVR <- ind_stats %>%           #Table shows PG players in top 5 teams fo
   select(Player:G, AST, TOV, PTS, PTS_per_game, Salary) %>%
   filter(Pos == "PG", Tm %in% c("GSW", "BOS", "DEN", "SAS", "ORL")) %>%
   mutate(ATTOVR = (AST/TOV)) %>%
-  mutate_at(vars(ATTOVR), funs(round(., 3)))
+  mutate_at(vars(ATTOVR), funs(round(., 3))) %>%
+  arrange(desc(ATTOVR))
 
 monte_morris <- pg_data %>%
   select(Player:G, AST:ATTOVR) %>%
   filter(Player == "Monte Morris")
-
-best_ATTOVR <- best_ATTOVR %>%      # Compared Monte Morris to players in teams found above
-  rbind(monte_morris) %>%
-  arrange(desc(ATTOVR))
 
 #Shooting Guard Selection -----
 
