@@ -86,13 +86,17 @@ After filtering point guard players by those that were above average for assists
 
 #### Shooting Guard
 
-
+To filter out the best shooting guard players, there were a few metrics that were observed. First was selecting the players that were above average in Field Goal Percentage and 3-Point Percentage. The data was then filtered by above average points per game and rebounds per game, leaving the data with 15 players. Alongside this, a general Points Percentage metric was created to show what percentage of points the player scored overall. The player chosen was `Bradley Beal`. He is the top scorer in points per game statistics, and is ranked high in all other metrics. When compared to the players in the top 5 teams to the points he scores per game, he is the top point scorer, scoring 4 points more per game than the second placed player. He is a more expensive player, at `$25,434,262`, however, due to his great statistics, he should prove beneficial for the team.
 
 #### Small Forward
 
 
 
 #### Power Forward
+
+
+
+#### Centre
 
 
 

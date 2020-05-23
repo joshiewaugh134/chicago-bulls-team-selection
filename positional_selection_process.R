@@ -85,12 +85,12 @@ best_sg_PTS_per_game <- ind_stats %>%
          PTS_per_game = (PTS/G)) %>%
   mutate_at(vars(PTS_per_1000_dollars, PTS_P, PTS_per_game), funs(round(., 3)))
 
-donovan_mitchell <- sg_data %>%
+bradley_beal <- sg_data %>%
   select(Player:Salary) %>%
-  filter(Player == "Donovan Mitchell")
+  filter(Player == "Bradley Beal")
 
 best_sg_PTS_per_game <- best_sg_PTS_per_game %>%      #Compared Donovan Mitchell to players in teams found above
-  rbind(donovan_mitchell) %>%
+  rbind(bradley_beal) %>%
   arrange(desc(PTS_per_game))
 
 #Small Forward Selection -----
