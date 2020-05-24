@@ -1,4 +1,4 @@
-ggplot(data = team_stats2, aes(x = ATTOVR, y = (PTS/G))) + # Graph of ATTOVR for teams
+ggplot(data = team_stats2, aes(x = ATTOVR, y = (PTS/G))) + # graph of ATTOVR for teams
   geom_point() +
   geom_text(aes(label = TmShort), nudge_y = 0.5, size = 2.5) +
   scale_x_continuous(limits = c(1.4, 2.1),
@@ -12,11 +12,11 @@ ggplot(data = team_stats2, aes(x = ATTOVR, y = (PTS/G))) + # Graph of ATTOVR for
        x = "Assist to Turnover Ratio",
        y = "Points scored in a game")
 
-pairs(scoring_dat,            #Multicollinearity test showed X2P was showed strongest trend for PTS 
+pairs(scoring_dat,            # multicollinearity test showed X2P was showed strongest trend for PTS 
       labels = c("Points per game", "2-Point Goals per game", "3-Point Goals per game"),
       main = "Multilinear Regression of how points are scored in a game")
 
-ind_stats %>%    # 2-Point Goals per game vs Points per game
+ind_stats %>%                 # 2-Point Goals per game vs Points per game
   ggplot() +
   geom_point(mapping = aes(x = (X2P/G), y = (PTS/G), colour = (X2P/G))) +
   scale_colour_gradient(low = "firebrick1", high = "black") +
@@ -32,7 +32,7 @@ ind_stats %>%    # 2-Point Goals per game vs Points per game
        y = "Points per Game",
        colour = "2-Point Goals per Game")
 
-ind_stats %>%     # Rebounds to 2-Point Goal Ratio
+ind_stats %>%                 # rebounds to 2-Point Goal Ratio
   ggplot() +
   geom_point(mapping = aes(x = (X2P/G), y = (ORB/G), colour = (X2P/G))) +
   scale_colour_gradient(low = "firebrick1", high = "black") +
