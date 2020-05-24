@@ -1,13 +1,13 @@
 library(tidyverse)
 
-#Load data into project ----
+# Load data into project ----
 
 ind_stats <- read.csv("data/raw/2018-19_nba_player_statistics.csv")
 salaries <- read.csv("data/raw/2018-19_nba_player-salaries.csv")
 team_stats1 <- read.csv("data/raw/2018-19_nba_team_statistics_1.csv")
 team_stats2 <- read.csv("data/raw/2018-19_nba_team_statistics_2.csv")
 
-#Renaming columns in data files ----
+# Renaming columns in data files ----
 
 ind_stats <- rename(ind_stats,
                     FGp = 'FG.', X3Pp = 'X3P.', X2Pp = 'X2P.', eFGp = 'eFG.',
@@ -37,7 +37,7 @@ team_stats2 <- team_stats2 %>%
   mutate_at(vars(ATTOVR), funs(round(., 3))) %>%
   select(Rk:Team, TmShort, G, W:L, FG:PTS, ATTOVR)
 
-#Tidying ind_stats data ----
+# Tidying ind_stats data ----
 
 ind_stats <- filter(ind_stats, Tm != "TOT") # removing when Tm = TOT, as it means TOTAL if player is in > 1 team
 
