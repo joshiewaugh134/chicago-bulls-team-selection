@@ -1,11 +1,6 @@
 #PG Graphs ----
 
-pg_data %>%                                 #Observation of relationship of AST to TOV
-  ggplot(mapping = aes(x = AST, y = TOV)) + 
-  geom_point() +
-  geom_smooth(method = "lm", colour = "red")
-
-pg_data %>%               #Shows spread of data according to ATTOVR and Salary to indicate value.
+pg_data %>%               # Shows spread of data according to ATTOVR and Salary to indicate value.
   ggplot(mapping = aes(x = ATTOVR, y = (Salary/1000), colour = Player)) + 
   geom_point()
 

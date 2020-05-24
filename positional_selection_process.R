@@ -1,6 +1,6 @@
 #Point Guard Selection -----
 
-pg_data <- pg_data %>%                 #Selects above average performers in AST, TOV and ATTOV
+pg_data <- pg_data %>%                 #Selects above average performers in AST, TOV and ATTOVR
   filter(ATTOVR >= mean_ATTOVR, AST >= mean_AST, TOV <= mean_TOV) %>%
   arrange(desc(ATTOVR))
 
@@ -8,12 +8,12 @@ monte_morris <- pg_data %>%            # Monte Morris chosen for starting PG
   select(Player:G, AST:ATTOVR) %>%
   filter(Player == "Monte Morris")
 
-pg_team_stats <- team_stats2 %>%       #Identifying teams with highest ATTOVR in NBA
+pg_team_stats <- team_stats2 %>%       # Identifying teams with highest ATTOVR in NBA
   select(Team:G, AST, TOV) %>%
   mutate(ATTOVR = (AST/TOV)) %>%
   mutate_at(vars(ATTOVR), funs(round(., 3)))
 
-best_ATTOVR <- ind_stats %>%           #Table shows PG players in top 5 teams for ATTOVR and compared to ATTOVR of Darren Collison
+best_ATTOVR <- ind_stats %>%           # Table shows PG players in top 5 teams for ATTOVR and compared to Monte Morris
   select(Player:G, AST, TOV, PTS, PTS_per_game, Salary) %>%
   filter(Pos == "PG", Tm %in% c("GSW", "BOS", "DEN", "SAS", "ORL")) %>%
   mutate(ATTOVR = (AST/TOV)) %>%
