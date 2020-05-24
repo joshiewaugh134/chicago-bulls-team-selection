@@ -56,7 +56,7 @@ Prior to the filtering process, the relationship between certain metrics were co
 
 <center>
 
-![](figs/team_ATTOVR_vs_PTS-per-game.jpeg){width=60%}
+![](figs/team_ATTOVR_vs_PTS-per-game.jpeg){width=40%}
 
 </center>
 
@@ -64,7 +64,11 @@ As the graph shows, there is an upward trend, suggesting that as the ATTOVR is h
 
 Next was to determine what type of goals should be used for scoring statistics. A multi-linear regression was conducted comparing the two types of field goals scored in a game, and points scored in a game. After determining that 2-Point goals had the best relationship, a scatter plot was created to show the relationship.
 
-![](figs/MLR_scoring.jpeg){width=49%} ![](figs/ind_2XP-per-game_vs_PTS-per-game.jpeg){width=49%}
+<center>
+
+![](figs/MLR_scoring.jpeg){width=40%} ![](figs/ind_2XP-per-game_vs_PTS-per-game.jpeg){width=40%}
+
+</center>
 
 These graphs both indicate that a large proportion of the team's points originate from 2-Point Goals.
 
@@ -72,7 +76,7 @@ Finally, a graph was drawn to show how frequently goals were scored after reboun
 
 <center>
 
-![](figs/ind_X2P-per-game_vs_RBG.jpeg){width=60%}
+![](figs/ind_X2P-per-game_vs_RBG.jpeg){width=40%}
 
 </center>
 
@@ -105,10 +109,10 @@ According to the above results, the team that should be selected is:
 * Point Guard - Monte Morris from the Denver Nuggets at $1,349,383
 * Shooting Guard - Bradley Beal from the Washington Wizards at $25,434,262
 * Small Forward - Nicholas Batum from the Charlotte Hornets at $24,000,000
-* Power Forward - 
-* Centre - Montrezl Harrell from the LA Clippers at $6,000,000 - During training, this player should work on his ability to block using drills to improve this statistics and become a more well rounded centre.
+* Power Forward - John Collins from the Atlanta Hawks at $2,299,080
+* Centre - Steven Adams from the Oklahoma City Thunder at $24,157,304 - During training, this player should work on his ability to block using drills to improve this statistics and become a more well rounded centre.
 
-Choosing these players will cost the club \$100,000,000 and will leave \$50,000,000 to spend on other players for the squad.
+Choosing these players will cost the club \$100,000,000 and will leave \$18,000,000 to spend on other players for the squad.
 
 ### References
 
