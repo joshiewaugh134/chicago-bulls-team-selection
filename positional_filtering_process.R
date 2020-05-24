@@ -1,4 +1,4 @@
-#Point Guard (PG) -----
+# Point Guard (PG) -----
 
 pg_data <- ind_stats %>%                             # filters Point Guards from ind_stats dataset
   select(Player:G, MP, AST, TOV, PTS, PTS_per_game, Salary) %>%
@@ -19,7 +19,7 @@ pg_data <- pg_data %>%
                                      true = "below average", false = "above average")) %>%
   select(Player:G, MP, AST, TOV, PTS:PTS_per_game, Salary, ATTOVR)                         
 
-#Shooting Guard (SG) -----
+# Shooting Guard (SG) -----
 
 sg_data <- ind_stats %>%                             # filters Point Guards from ind_stats dataset
   select(Player:G, MP, FG:X2Pp, FT:FTp, AST, ORB:TRB, PTS, ORB_z, DRB_z, TRB_z, 
@@ -30,7 +30,7 @@ sg_data <- ind_stats %>%                             # filters Point Guards from
          X3Pp_z = (X3Pp - mean(X3Pp)) / sd(X3Pp)) %>%
   mutate_at(vars(PTS_per_game, FGp_z, X3Pp_z), funs(round(., 3))) # changes variables to 3 decimal places
 
-#Shot Forward (SF) -----
+# Small Forward (SF) -----
 
 sf_data <- ind_stats %>%                             # filters Point Guards from ind_stats dataset
   select(Player:G, MP, FG:eFGp, AST, ORB:TRB, PTS, Salary) %>%
@@ -40,7 +40,7 @@ sf_data <- ind_stats %>%                             # filters Point Guards from
          FGp_z = (FGp - mean(FGp)) / sd(FGp)) %>%
   mutate_at(vars(PTS_per_game, AST_z, FGp_z), funs(round(., 3))) # changes variables to 3 decimal places
                   
-#Power Forward (PF) -----
+# Power Forward (PF) -----
 
 pf_data <- ind_stats %>%                             # filters Point Guards from ind_stats dataset
   select(Player:G, MP, FG:eFGp, ORB:TRB, PTS, Salary) %>%
@@ -53,7 +53,7 @@ pf_data <- ind_stats %>%                             # filters Point Guards from
          X2P_per_game = (X2P/G)) %>%
   mutate_at(vars(RB_per_game, PTS_per_game, X2Pp_z, RPG_z, FG_per_game, X2P_per_game), funs(round(., 3))) # changes variables to 3 decimal places
 
-#Centre (C) -----
+# Centre (C) -----
 
 c_data <- ind_stats %>%                              # filters Point Guards from ind_stats dataset
   select(Player:G, MP:eFGp, ORB:TRB, BLK, PTS, Salary) %>%
