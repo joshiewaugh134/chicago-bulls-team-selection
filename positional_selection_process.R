@@ -24,7 +24,7 @@ best_ATTOVR <- ind_stats %>%           # filters PG players in top 5 teams for A
 
 sg_data <- sg_data %>%                 # arranging variables into different order for easier viewing
   select(Player:FTp, FGp_z, X3Pp_z, PTS, PTS_per_game, AST, AST_z, ORB:TRB, ORB_z, DRB_z, TRB_z, 
-          Salary) 
+         Salary) 
 
 mean_PTS_per_game <- mean(sg_data$PTS_per_game)   # formula for average points scored in a game
 
