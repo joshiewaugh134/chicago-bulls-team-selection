@@ -108,7 +108,7 @@ Based on the above results, the starting lineup that I recommend for selection a
 
 * Point Guard - Monte Morris, Denver Nuggets ($1,349,383) - Drill to reduce turnovers - *Machine Gun Passing* (3).
 * Shooting Guard - Bradley Beal, Washington Wizards ($25,434,262) - Drill to improve 3-Point Goal Accuracy - *Partner Shooting* (4).
-* Small Forward - Nicholas Batum, Charlotte Hornets ($24,000,000) - Drill to improve 3-Point and 2-Point Goal Accuracy - *Partner Shooting*
+* Small Forward - Nicolas Batum, Charlotte Hornets ($24,000,000) - Drill to improve 3-Point and 2-Point Goal Accuracy - *Partner Shooting*
 * Power Forward - John Collins, Atlanta Hawks ($2,299,080) - 3-Point accuracy improved by *Partner Shooting*, drill to improve defensive rebound collection - *Rotation Rebounding* (5)
 * Centre - Steven Adams, Oklahoma City Thunder ($24,157,304) - Drills to improve Blocking - *React and Block* (6).
 
