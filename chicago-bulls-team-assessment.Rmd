@@ -106,15 +106,19 @@ The selection process of the final position of centres was simple, sorting above
 
 According to the above results, the starting team that should be selected is:
 
-* Point Guard - Monte Morris from the Denver Nuggets at $1,349,383
-* Shooting Guard - Bradley Beal from the Washington Wizards at $25,434,262
-* Small Forward - Nicholas Batum from the Charlotte Hornets at $24,000,000
-* Power Forward - John Collins from the Atlanta Hawks at $2,299,080
-* Centre - Steven Adams from the Oklahoma City Thunder at $24,157,304 - During training, this player should work on his ability to block using drills to improve this statistics and become a more well rounded centre.
+* Point Guard - Monte Morris from the Denver Nuggets at $1,349,383 - During training, Morris will require some drills such as the *Machine Gun Passing* drill to reduce his number of turnovers (3).
+* Shooting Guard - Bradley Beal from the Washington Wizards at $25,434,262 - During training, Beal would greatly benefit from some drills to improve his 3-Point Goal accuracy such as *Partner Shooting* to increase his potential amount of points per game (4).
+* Small Forward - Nicholas Batum from the Charlotte Hornets at $24,000,000 - Similar to Beal, Batum would benefit from *Partner Shooting* style drills to improve his 3-Point Goal accuracy, and a variation for his 2-Point accuracy as well to unlock his full potential.
+* Power Forward - John Collins from the Atlanta Hawks at $2,299,080 - Collins is quite a well-rounded Power Forward, but may benefit from a *Partner Shooting* drill. If the coach sees fit, he may also improve his defensive rebound capabilities by use of drills such as *Rotation Rebounding* (5)
+* Centre - Steven Adams from the Oklahoma City Thunder at $24,157,304 - During training, Adams should work on his ability to block using drills such as *React and Block* to improve their blocking ability and become a more well rounded centre (6).
 
 Choosing these players will cost the club \$77,240,029 and will leave \$40,759,971 to spend on other 10 remaining players for the roster This will average approximately $4,075,997, which will buy us some very valuable players, as shown in the data extrapolated during this analysis.
 
 ### References
 
-1. Basketball, Kingaroy. Basketball positions [Internet]. Kingaroy: Kingaroy Amateur Basketball Association; n.d. [cited 2020 April 19]. Available from: https://websites.sportstg.com/get_file.cgi?id=36250836
+1. Kingaroy Basketball. Basketball positions [Internet]. Kingaroy: Kingaroy Amateur Basketball Association; n.d. [cited 2020 April 19]. Available from: https://websites.sportstg.com/get_file.cgi?id=36250836
 2. Academy, BBC Sport. Basketball players [Internet]. London: BBC; 2020 [cited 2020 April 19]. Available from: http://news.bbc.co.uk/sportacademy/bsp/hi/basketball/rules/players/html/default.stm
+3.Breakthrough Basketball. Machine gun passing [Internet]. Breakthrough Basketball; 2009. [cited 2020 May 2]. Available from: https://www.breakthroughbasketball.com/drills/machinegunpassing.html
+4. Andy Hamilton. Grinnell’s 7 drills to improve 3-point shooting [Internet]. Winning Hoops; n.d. [cited 2020 May 4]. Available from: https://winninghoops.com/article/basketball-grinnell-college-3-point-shooting-drills/
+5. Coach Mac. 7 Rebounding Drills (Dominate the Rebounding Battle) [Internet]. Basketball for Coaches; 2017. [cited 2020 April 24]. Available from: https://www.basketballforcoaches.com/rebounding-drills/
+6. Jeff Haefner. 8 Drills to create a great shot blocker [Internet]. USA Basketball; 2015 [cited 2020 May 14]. Available from: https://www.usab.com/youth/news/2012/04/8drills-to-create-a-great-shot-blocker.aspx

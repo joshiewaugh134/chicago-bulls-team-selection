@@ -175,20 +175,20 @@ pf_data %>%               #Shows spread of data according to RBX2P and Salary to
 #John Collins was chosen, and compared to Top 5 in that position
 
 pf_team_stats <- team_stats2 %>%
-  select(Team:G, FGp, X2P, ORB:TRB) %>%
+  select(Team:G, FGp, X2P:X2Pp, ORB:TRB) %>%
   mutate(RPG = (TRB/G),
          RBX2P = (ORB/X2P)) %>%
   mutate_at(vars(RPG, RBX2P), funs(round(., 3))) %>%
   arrange(desc(RPG))
 
 best_pf_RBX2P <- ind_stats %>%           #Table shows PF players in top 5 teams for RBX2P and compared to Kyle Kuzma
-  select(Player:G, X2P, ORB:TRB, Salary) %>%
+  select(Player:G, X2P:X2Pp, ORB:TRB, Salary) %>%
   filter(Pos == "PF", Tm %in% c("MIL", "OKC", "POR", "PHI", "NOP")) %>%
   mutate(RBX2P = (ORB/X2P)) %>%
   mutate_at(vars(RBX2P), funs(round(., 3)))
 
 john_collins <- pf_data %>%    
-  select(Player:G, X2P, ORB:TRB, Salary, RBX2P) %>%
+  select(Player:G, X2P:X2Pp, ORB:TRB, Salary, RBX2P) %>%
   filter(Player == "John Collins")
 
 best_pf_RBX2P <- best_pf_RBX2P %>%      #Compared ____ to players in teams found above
@@ -242,8 +242,8 @@ best_c_RBX2P <- best_c_RBX2P %>%      #Compared Steven Adams to players in teams
 #Selected Team -----
 
 selected_team <- ind_stats %>%
-  filter(Player %in% c("Monte Morris", "Bradley Beal", "Nicolas Batum", "Kyle Kuzma",
-                       "Montrezl Harrell")) %>%
+  filter(Player %in% c("Monte Morris", "Bradley Beal", "Nicolas Batum", "John Collins",
+                       "Steven Adams")) %>%
   select(Player:G, FG:X2Pp, FT:FTp, ORB:AST, BLK:TOV, PTS, PTS_per_game:Salary) %>%
   mutate(ATTOVR = (AST/TOV),
          PTS_A = ((X3PA*3)+(X2PA*2)+(FTA*1)),
