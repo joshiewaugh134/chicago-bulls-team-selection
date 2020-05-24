@@ -3,7 +3,7 @@
 pg_data <- ind_stats %>%
   select(Player:G, MP, AST, TOV, PTS, PTS_per_game, Salary) %>%
   filter(Pos  == "PG") %>%
-  mutate(ATTOVR = (AST/TOV)) %>%
+  mutate(ATTOVR = (AST/TOV)) %>%                     # Addition of new Assist-to-Turnover variable
   mutate_at(vars(ATTOVR), funs(round(., 3)))
 
 pg_data <- pg_data[is.finite(pg_data$ATTOVR), ]
@@ -25,13 +25,10 @@ sg_data <- ind_stats %>%
   select(Player:G, MP, FG:X2Pp, FT:FTp, AST, ORB:TRB, PTS, ORB_z, DRB_z, TRB_z, 
          AST_z, Salary) %>%
   filter(Pos %in% c("SG", "SF, SG", "PF, SG")) %>%
-  mutate(PTS_A = ((X3PA*3)+(X2PA*2)+(FTA*1)),
-         PTS_P = (PTS/PTS_A),
-         PTS_per_1000_dollars = (PTS/(Salary/1000)),
-         PTS_per_game = (PTS/G),
+  mutate(PTS_per_game = (PTS/G),
          FGp_z = (FGp - mean(FGp)) / sd(FGp),
          X3Pp_z = (X3Pp - mean(X3Pp)) / sd(X3Pp)) %>%
-  mutate_at(vars(PTS_P, PTS_per_1000_dollars, PTS_per_game, FGp_z, X3Pp_z), funs(round(., 3)))
+  mutate_at(vars(PTS_per_game, FGp_z, X3Pp_z), funs(round(., 3)))
 
 #Shot Forward (SF) -----
 
@@ -63,8 +60,7 @@ c_data <- ind_stats %>%
   filter(Pos %in% c("C", "C, PF")) %>%
   mutate(PTS_per_game = (PTS/G),
          RBG = (TRB/G),
-         PTS_per_1000_Dollars = (PTS/(Salary/1000)),
          BLK_z = (BLK - mean(BLK)) / sd(BLK),
          TRB_z = (TRB - mean(TRB)) / sd(TRB),
          X2Pp_z = (X2Pp - mean(X2Pp)) / sd(X2Pp)) %>%
-  mutate_at(vars(PTS_per_game, RBG, PTS_per_1000_Dollars, BLK_z, TRB_z, X2Pp_z), funs(round(., 3)))
+  mutate_at(vars(PTS_per_game, RBG, BLK_z, TRB_z, X2Pp_z), funs(round(., 3)))
