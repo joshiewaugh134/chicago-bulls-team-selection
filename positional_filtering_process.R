@@ -8,7 +8,7 @@ pg_data <- ind_stats %>%
 
 pg_data <- pg_data[is.finite(pg_data$ATTOVR), ]
 
-source(local = TRUE, "funs/pg_attovr_functions.R") #contains formula for ATTOVR functions
+source(local = TRUE, "R/pg_attovr_functions.R") #contains formula for ATTOVR functions
 
 pg_data <- pg_data %>%
   mutate(ATTOVR_category = if_else(condition = ATTOVR < mean_ATTOVR,
@@ -32,8 +32,6 @@ sg_data <- ind_stats %>%
          FGp_z = (FGp - mean(FGp)) / sd(FGp),
          X3Pp_z = (X3Pp - mean(X3Pp)) / sd(X3Pp)) %>%
   mutate_at(vars(PTS_P, PTS_per_1000_dollars, PTS_per_game, FGp_z, X3Pp_z), funs(round(., 3)))
-
-#
 
 #Shot Forward (SF) -----
 

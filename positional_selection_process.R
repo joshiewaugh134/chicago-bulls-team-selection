@@ -1,19 +1,12 @@
 #Point Guard Selection -----
 
-pg_data %>%                                 #Observation of relationship of AST to TOV
-  ggplot(mapping = aes(x = AST, y = TOV)) + 
-  geom_point() +
-  geom_smooth(method = "lm", colour = "red")
-
-pg_data <- pg_data %>%                      #Selects above average performers in AST, TOV and ATTOV
+pg_data <- pg_data %>%                 #Selects above average performers in AST, TOV and ATTOV
   filter(ATTOVR >= mean_ATTOVR, AST >= mean_AST, TOV <= mean_TOV) %>%
   arrange(desc(ATTOVR))
 
-pg_data %>%               #Shows spread of data according to ATTOVR and Salary to indicate value.
-  ggplot(mapping = aes(x = ATTOVR, y = (Salary/1000), colour = Player)) + 
-  geom_point()
-
-## Monte Morris chosen due to being a low price, and the highest ATTOVR showing high value
+monte_morris <- pg_data %>%            # Monte Morris chosen for starting PG
+  select(Player:G, AST:ATTOVR) %>%
+  filter(Player == "Monte Morris")
 
 pg_team_stats <- team_stats2 %>%       #Identifying teams with highest ATTOVR in NBA
   select(Team:G, AST, TOV) %>%
@@ -27,25 +20,11 @@ best_ATTOVR <- ind_stats %>%           #Table shows PG players in top 5 teams fo
   mutate_at(vars(ATTOVR), funs(round(., 3))) %>%
   arrange(desc(ATTOVR))
 
-monte_morris <- pg_data %>%
-  select(Player:G, AST:ATTOVR) %>%
-  filter(Player == "Monte Morris")
-
 #Shooting Guard Selection -----
 
 sg_data <- sg_data %>%
   select(Player:FTp, PTS, PTS_A:PTS_per_game, AST, ORB:TRB, ORB_z, DRB_z, TRB_z, 
          AST_z, Salary) 
-
-sg_data %>%
-  ggplot(mapping = aes(x = PTS_P, y = FGp)) + 
-  geom_point() +
-  geom_smooth(method = "lm", colour = "red")
-
-sg_data %>%
-  ggplot(mapping = aes(x = PTS_P, y = X3Pp)) + 
-  geom_point() +
-  geom_smooth(method = "lm", colour = "red")
 
 sg_data <- sg_data %>%
   mutate(FGp_z = (FGp - mean(FGp)) / sd(FGp),
@@ -62,11 +41,10 @@ sg_data <- arrange(sg_data, desc(PTS_per_game)) %>%
   select(Player:G, FG:FTp, PTS, PTS_A:PTS_P, 
          AST, TRB, PTS_per_1000_dollars:PTS_per_game, Salary)
 
-sg_data %>%               #Shows spread of data according to ATTOVR and Salary to indicate value.
-  ggplot(mapping = aes(x = PTS_per_game, y = (Salary/1000), colour = Player)) + 
-  geom_point()
+bradley_beal <- sg_data %>%                            # Bradley Beal as starting SG
+  select(Player:Salary) %>%
+  filter(Player == "Bradley Beal")
 
-##Donovan Mitchell chosen due to being the most consistent player in set, and the best value pointscorer.
 
 sg_team_stats <- team_stats2 %>%
   select(Team:G, FG:FTp, AST, TRB, PTS) %>%
@@ -85,18 +63,14 @@ best_sg_PTS_per_game <- ind_stats %>%
          PTS_per_game = (PTS/G)) %>%
   mutate_at(vars(PTS_per_1000_dollars, PTS_P, PTS_per_game), funs(round(., 3)))
 
-bradley_beal <- sg_data %>%
-  select(Player:Salary) %>%
-  filter(Player == "Bradley Beal")
-
-best_sg_PTS_per_game <- best_sg_PTS_per_game %>%      #Compared Donovan Mitchell to players in teams found above
+best_sg_PTS_per_game <- best_sg_PTS_per_game %>%      # Compared Bradley Beal to players in teams found above
   rbind(bradley_beal) %>%
   arrange(desc(PTS_per_game))
 
 #Small Forward Selection -----
 
-source(local = TRUE, "funs/linear_regression_scoring_process.R") # contains Linear Regression for Shooting
-source(local = TRUE, "funs/linear_regression_RB_to_X2P.R") # contains Linear Regression for RTBG Ratio
+source(local = TRUE, "R/linear_regression_scoring_process.R") # contains Linear Regression for Shooting
+source(local = TRUE, "R/linear_regression_RB_to_X2P.R") # contains Linear Regression for RTBG Ratio
 
 sf_data <- sf_data %>%
   mutate(RBX2P = (ORB/X2P),
@@ -112,11 +86,7 @@ sf_data <- sf_data %>%
   filter(ASTPG_z >= 0) %>%
   arrange(desc(AST_per_game))
 
-sf_data %>%               #Shows spread of data according to AST and Salary to indicate value.
-  ggplot(mapping = aes(x = AST, y = (Salary/1000), colour = Player)) + 
-  geom_point()
-
-## Nicolas Batum was chosen 
+## Nicolas Batum was chosen and compared to SF in top 5 teams for AST per game
 
 sf_team_stats <- team_stats2 %>%
   select(Team:G, FGp:X2Pp, AST, ORB:TRB) %>%
@@ -145,18 +115,8 @@ best_sf_ASTPG <- best_sf_ASTPG %>%      #Compared ____ to players in teams found
 
 #Power Forward Selection -----
 
-pf_data %>%
-  ggplot(mapping = aes(x = G, y = RB_per_game)) + 
-  geom_point() +
-  geom_smooth(method = "lm", colour = "red")
-
 pf_data <- pf_data %>%
   filter(RPG_z >= 0)
-
-pf_data %>%
-  ggplot(mapping = aes(x = PTS_per_game, y = X2P_per_game)) + 
-  geom_point() +
-  geom_smooth(method = "lm", colour = "red")
 
 pf_data <- pf_data %>%
   filter(X2Pp_z >= 0)
@@ -167,10 +127,6 @@ pf_data <- pf_data %>%
   mutate_at(vars(RBX2P_z) , funs(round(., 3))) %>%
   filter(RBX2P_z >= 0)  %>%
   arrange(desc(RBX2P))
-
-pf_data %>%               #Shows spread of data according to RBX2P and Salary to indicate value.
-  ggplot(mapping = aes(x = RBX2P, y = (Salary/1000), colour = Player)) + 
-  geom_point()
 
 #John Collins was chosen, and compared to Top 5 in that position
 
@@ -200,21 +156,12 @@ best_pf_RBX2P <- best_pf_RBX2P %>%      #Compared ____ to players in teams found
 c_data <- c_data %>%
   filter(BLK_z >= 0)
 
-c_data %>%
-  ggplot(mapping = aes(x = PTS, y = X2P)) + 
-  geom_point() +
-  geom_smooth(method = "lm", colour = "red")
-
 c_data <- c_data %>%
   mutate(RBX2P = (ORB/X2P),
          RBX2P_z = (RBX2P - mean(RBX2P)) / sd(RBX2P)) %>%
   mutate_at(vars(RBX2P_z) , funs(round(., 3))) %>%
   filter(RBX2P_z >= 0)  %>%
   arrange(desc(RBX2P))
-
-c_data %>%               #Shows spread of data according to RBX2P and Salary to indicate value. 
-  ggplot(mapping = aes(x = RBX2P, y = (Salary/1000), colour = Player)) + 
-  geom_point()
 
 ## Steven Adams was chosen, and compared to Top 5 in that position
 
