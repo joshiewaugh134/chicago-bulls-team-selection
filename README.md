@@ -35,5 +35,5 @@ There are also 5 processes to be opened in a specific order for the analysis to 
 1. [tidying_data](tidying_data.R) -> process of reading and tidying the raw data
 2. [positional_filtering_process](positional_filtering_process.R) -> process of filtering positions into their own data sets
 3. [positional_selection_process](positional_selection_process.R) -> process of refining data sets to choose a player to be in starting lineup
-4. [modelling_graphs](modelling_graphs_by_position.R) -> visualisations of trends in the data
+4. [modelling_graphs](modelling_graphs.R) -> visualisations of trends in the data
 5. [graphics_for_communication](graphics_for_communication.R) -> visualisations used in the `knitr` report
