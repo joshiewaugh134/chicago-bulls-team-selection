@@ -96,11 +96,11 @@ To determine the player best suited for the small forward position, the metrics 
 
 #### Power Forward
 
-
+To select the starting power forward player, above average power forwards were filtered by rebounds per game, 2-Point Goal accuracy and the RTPG Ratio. After this process, `John Collins` was chosen as a standout player. Although, according to the RTPG ratio, he is only average, he has the 2nd best 2-Point goal accuracy at `60.9%`, highest count of goals of `410`, and the highest number of rebounds obtained per game of `9.75`. When compared to players in the top 5 teams, Collins is again ranked high for shooting and rebounds, however is around the average for RTPG ratio. At the price of `$2,299,080`, his stats show promising ability, and should be strongly considered for our club.
 
 #### Centre
 
-The selection process of the final position of centres was simple, sorting above average players in blocks, rebounds and 2-Point Goal statistics. Once again, the RTPG Ratio was also used in this position. This process left 11 potential centres to choose from. `Steven Adams` excells in all relevant scoring statistics (Field Goals and 2-Point Goals), offensive and total rebounds, and the RTPG Ratio, however when it comes to blocking and obtaining defensive rebounds, he is about average in the data pool. Despite this, at just `$24,157,304`, he is a valuable player who should be added to our team. When this player is compared to the centres in the Top 5 teams, he ranks similarly, with high levels in scoring, offensive and total rebounds and RTPG Ratio, and about average in defensive rebounds and blocks.
+The selection process of the final position of centres was simple, sorting above average players in blocks, rebounds and 2-Point Goal statistics. Once again, the RTPG Ratio was also used in this position. This process left 11 potential centres to choose from. `Steven Adams` excells in all relevant scoring statistics (Field Goals  and 2-Point Goals), offensive and total rebounds, and the RTPG Ratio, however when it comes to blocking and obtaining defensive rebounds, he is about average in the data pool. Despite this, at just `$24,157,304`, he is a valuable player who should be added to our team. When this player is compared to the centres in the Top 5 teams, he ranks similarly, with high levels in scoring, offensive and total rebounds and RTPG Ratio, and about average in defensive rebounds and blocks.
 
 ### Recommendations for the team
 

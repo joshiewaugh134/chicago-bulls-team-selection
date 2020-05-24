@@ -95,7 +95,8 @@ best_sg_PTS_per_game <- best_sg_PTS_per_game %>%      #Compared Donovan Mitchell
 
 #Small Forward Selection -----
 
-source(local = TRUE, "funs/linear_regression_scoring_process.R") #contains Linear Regression for Shooting
+source(local = TRUE, "funs/linear_regression_scoring_process.R") # contains Linear Regression for Shooting
+source(local = TRUE, "funs/linear_regression_RB_to_X2P.R") # contains Linear Regression for RTBG Ratio
 
 sf_data <- sf_data %>%
   mutate(RBX2P = (ORB/X2P),
@@ -143,24 +144,6 @@ best_sf_ASTPG <- best_sf_ASTPG %>%      #Compared ____ to players in teams found
   arrange(desc(AST_per_game))
 
 #Power Forward Selection -----
-
-##Multi Linear Regression - PF 
-
-pairs(formula = ~ PTS_per_game + FG_per_game + X2P_per_game + RB_per_game, 
-      data = pf_data) #Multicollinearity test
-
-pf_fit <- lm(PTS_per_game ~ FG_per_game + X2P_per_game + RB_per_game, data = pf_data)
-broom::tidy(pf_fit, conf.int = TRUE) #Multi-Linear Regression vs PTS per game
-
-car::avPlots(pf_fit) #Linearity
-
-car::vif(pf_fit) #Variance inflation factor
-
-##Linear Regression - PF
-
-source(local = TRUE, "funs/linear_regression_RB_to_X2P.R") #contains Linear Regression for RB/X2P
-
-##Positional Analysis
 
 pf_data %>%
   ggplot(mapping = aes(x = G, y = RB_per_game)) + 

@@ -12,6 +12,10 @@ ggplot(data = team_stats2, aes(x = ATTOVR, y = (PTS/G))) + # Graph of ATTOVR for
        x = "Assist to Turnover Ratio",
        y = "Points scored in a game")
 
+pairs(scoring_dat,            #Multicollinearity test showed X2P was showed strongest trend for PTS 
+      labels = c("Points per game", "2-Point Goals per game", "3-Point Goals per game"),
+      main = "Multilinear Regression of how points are scored in a game")
+
 ind_stats %>%    # 2-Point Goals per game vs Points per game
   ggplot() +
   geom_point(mapping = aes(x = (X2P/G), y = (PTS/G), colour = (X2P/G))) +
@@ -30,17 +34,19 @@ ind_stats %>%    # 2-Point Goals per game vs Points per game
 
 ind_stats %>%     # Rebounds to 2-Point Goal Ratio
   ggplot() +
-  geom_point(mapping = aes(x = (X2P/G), y = (TRB/G), colour = (X2P/G))) +
+  geom_point(mapping = aes(x = (X2P/G), y = (ORB/G), colour = (X2P/G))) +
   scale_colour_gradient(low = "firebrick1", high = "black") +
   scale_x_continuous(limits = c(0, 10),
                      breaks = seq(0, 10, by = 2)) +
-  scale_y_continuous(limits = c(0, 14),
-                     breaks = seq(0, 14, by = 2)) +
+  scale_y_continuous(limits = c(0, 6),
+                     breaks = seq(0, 6, by = 2)) +
   theme_classic() +
   labs(title = "Relationship between 2-Point Goals per Game and Rebounds per Game",
-       subtitle = "Players tend to score more 2-Point goals when they have more rebounds",
+       subtitle = "Players tend to score more 2-Point goals when they have more Offensive rebounds",
        caption = "Data sourced from basketball-reference.com",
        x = "2-Point Goals per Game",
-       y = "Rebounds per Game",
+       y = "Offensive Rebounds per Game",
        colour = "2-Point Goals per Game")
+
+
 
