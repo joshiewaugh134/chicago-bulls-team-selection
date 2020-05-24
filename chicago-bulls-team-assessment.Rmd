@@ -88,7 +88,7 @@ To filter out the best shooting guard players, there were a few metrics that wer
 
 #### Small Forward
 
-To determine the player best suited for the small forward position, the metrics that were used to refine the data were rebounds, assists and 2-Point Goals (as per results from the multilinear regression above). Another metric was also created, the Rebound-to-2-Point-Goal (RTPG) Ratio. This was to determine how frequently a goal was scored off a rebound. After the top 14 players were created, `Kevin Durant` was chosen to be the player we sign. Although he is lower than `LeBron James` in the Assists per game and Offensive Rebounds metrics, Durant was ranked higher than James in Total Rebounds, Defensive Rebounds and 2-Point Goals metrics. Compared to the top 5 teams, in Assists per game and RTPG Ratio, he is the top player by far, showing that as `$30,000,000`, he is worth the investment for the team.
+To determine the player best suited for the small forward position, the metrics that were used to refine the data were rebounds, assists and 2-Point Goals (as per results from the multilinear regression above). Another metric was also created, the Rebound-to-2-Point-Goal (RTPG) Ratio. This was to determine the likelihood a 2-Point Goal being scored off the back of an offensive rebound. After the top 11 players were finalised, `Nicolas Batum` was chosen to be the player we sign. Although he he doesnt have a very high offensive rebound statistic, and subsequently a low RTBG value, he dominates the field in the other rebound and assist stats, is highly ranked in his shooting percentages for all types of goals, and also has the number of points scored in a game. Compared to the top 5 teams, in all metrics, Batum ranks similarly in all rebounds, except for offensive rebounds. In offensive rebounds, he is ranked third. In this data pool, 3 of the overall top 5 teams were included, showing that earning offensive rebounds aren't necessarily a top priority in their game when it comes to scoring points. Due to this, assists per game was the main important metric, as it shows the player's involvement, of which Batum was ranked second in this data pool. With his price at `$24,000,000`, he has an important role in our team, both with his impressive shooting accuracy, ability to obtain defensive rebounds, and his high number of assists.
 
 #### Power Forward
 
@@ -104,13 +104,13 @@ According to the above results, the team that should be selected is:
 
 * Point Guard - Monte Morris from the Denver Nuggets at $1,349,383
 * Shooting Guard - Bradley Beal from the Washington Wizards at $25,434,262
-* Small Forward - Kevin Durant from the Golden State Warriors at $30,000,000
+* Small Forward - Nicholas Batum from the Charlotte Hornets at $24,000,000
 * Power Forward - 
-* Centre - Montrezl Harrell from the LA Clippers at $6,000,000 - During training, this player should work on his ability to block to improve his statistics and become a more well rounded centre.
+* Centre - Montrezl Harrell from the LA Clippers at $6,000,000 - During training, this player should work on his ability to block using drills to improve this statistics and become a more well rounded centre.
 
 Choosing these players will cost the club \$100,000,000 and will leave \$50,000,000 to spend on other players for the squad.
 
 ### References
 
-1. Basketball, Kingaroy. Basketball positions [Internet. Kingaroy: Kingaroy Amateur Basketball Association; n.d. [cited 2020 April 19]. Available from: https://websites.sportstg.com/get_file.cgi?id=36250836
+1. Basketball, Kingaroy. Basketball positions [Internet]. Kingaroy: Kingaroy Amateur Basketball Association; n.d. [cited 2020 April 19]. Available from: https://websites.sportstg.com/get_file.cgi?id=36250836
 2. Academy, BBC Sport. Basketball players [Internet]. London: BBC; 2020 [cited 2020 April 19]. Available from: http://news.bbc.co.uk/sportacademy/bsp/hi/basketball/rules/players/html/default.stm

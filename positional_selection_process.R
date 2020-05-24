@@ -98,7 +98,7 @@ best_sg_PTS_per_game <- best_sg_PTS_per_game %>%      #Compared Donovan Mitchell
 source(local = TRUE, "funs/linear_regression_scoring_process.R") #contains Linear Regression for Shooting
 
 sf_data <- sf_data %>%
-  mutate(RBX2P = (X2P/TRB),
+  mutate(RBX2P = (ORB/X2P),
          RBX2P_z = (RBX2P - mean(RBX2P)) / sd(RBX2P)) %>%
   mutate_at(vars(RBX2P, RBX2P_z) , funs(round(., 3))) %>%
   filter(RBX2P_z >= 0)  %>%
@@ -115,25 +115,31 @@ sf_data %>%               #Shows spread of data according to AST and Salary to i
   ggplot(mapping = aes(x = AST, y = (Salary/1000), colour = Player)) + 
   geom_point()
 
-##Kevin Durant was chosen despite being 2nd in AST. Similar stats to Lebron James (1st), for $5million less
+## Nicolas Batum was chosen 
 
 sf_team_stats <- team_stats2 %>%
-  select(Team:G, FGp:X2Pp, AST, TRB) %>%
+  select(Team:G, FGp:X2Pp, AST, ORB:TRB) %>%
   mutate(AST_per_game = (AST/G),
-         RBX2P = (X2P/TRB)) %>%
+         RBX2P = (ORB/X2P)) %>%
   mutate_at(vars(AST_per_game, RBX2P) , funs(round(., 3))) %>%
   arrange(desc(AST_per_game))
 
-kevin_durant <- sf_data %>%    
-  select(Player:G, X3P:X3Pp, X2P:X2Pp, AST, TRB, Salary, RBX2P) %>%
-  filter(Player == "Montrezl Harrell")
+nicolas_batum <- sf_data %>%    
+  select(Player:G, FG:FGp, X3P:X3Pp, X2P:X2Pp, AST, ORB:TRB, Salary, RBX2P) %>%
+  filter(Player == "Nicolas Batum") %>%
+  mutate(AST_per_game = (AST/G)) %>%
+  mutate_at(vars(AST_per_game), funs(round(., 3)))
 
 best_sf_ASTPG <- ind_stats %>%           #Table shows SF players in top 5 teams for AST/G and compared to Kevin Durant
-  select(Player:G, X3P:X3Pp, X2P:X2Pp, AST, TRB, Salary) %>%
+  select(Player:G, FG:FGp, X3P:X3Pp, X2P:X2Pp, AST, ORB:TRB, Salary) %>%
   filter(Pos == "SF", Tm %in% c("GSW", "DEN", "NOP", "PHI", "BOS")) %>%
   mutate(AST_per_game = (AST/G),
          RBX2P = (X2P/TRB)) %>%
   mutate_at(vars(AST_per_game, RBX2P), funs(round(., 3))) %>%
+  arrange(desc(AST_per_game))
+
+best_sf_ASTPG <- best_sf_ASTPG %>%      #Compared ____ to players in teams found above
+  rbind(nicolas_batum) %>%
   arrange(desc(AST_per_game))
 
 #Power Forward Selection -----
@@ -173,7 +179,7 @@ pf_data <- pf_data %>%
   filter(X2Pp_z >= 0)
 
 pf_data <- pf_data %>%
-  mutate(RBX2P = (X2P/TRB),
+  mutate(RBX2P = (ORB/X2P),
          RBX2P_z = (RBX2P - mean(RBX2P)) / sd(RBX2P)) %>%
   mutate_at(vars(RBX2P_z) , funs(round(., 3))) %>%
   filter(RBX2P_z >= 0)  %>%
@@ -217,7 +223,7 @@ c_data %>%
   geom_smooth(method = "lm", colour = "red")
 
 c_data <- c_data %>%
-  mutate(RBX2P = (X2P/TRB),
+  mutate(RBX2P = (ORB/X2P),
          RBX2P_z = (RBX2P - mean(RBX2P)) / sd(RBX2P)) %>%
   mutate_at(vars(RBX2P_z) , funs(round(., 3))) %>%
   filter(RBX2P_z >= 0)  %>%
@@ -227,23 +233,23 @@ c_data %>%               #Shows spread of data according to RBX2P and Salary to 
   ggplot(mapping = aes(x = RBX2P, y = (Salary/1000), colour = Player)) + 
   geom_point()
 
-##Montrezl Harrell was chosen, and compared to Top 5 in that position
+##  was chosen, and compared to Top 5 in that position
 
 c_team_stats <- team_stats2 %>%
   select(Team:G, FGp, X2P, TRB) %>%
-  mutate(RPG = (TRB/G),
+  mutate(RPG = (ORB/X2P),
          RBX2P = (X2P/TRB)) %>%
   mutate_at(vars(RPG, RBX2P), funs(round(., 3))) %>%
   arrange(desc(RBX2P))
 
 best_c_RBX2P <- ind_stats %>%           #Table shows PF players in top 5 teams for RBX2P and compared to Montrezl Harrell
-  select(Player:G, X2P, TRB, Salary) %>%
+  select(Player:G, X2P, BLK, TRB, Salary) %>%
   filter(Pos == "C", Tm %in% c("PHO", "IND", "WAS", "SAS", "CHI")) %>%
-  mutate(RBX2P = (X2P/TRB)) %>%
+  mutate(RBX2P = (ORB/X2P)) %>%
   mutate_at(vars(RBX2P), funs(round(., 3)))
 
 montrezl_harrell <- c_data %>%    
-  select(Player:G, X2P, TRB, Salary, RBX2P) %>%
+  select(Player:G, X2P, BLK, TRB, Salary, RBX2P) %>%
   filter(Player == "Montrezl Harrell")
 
 best_c_RBX2P <- best_c_RBX2P %>%      #Compared ____ to players in teams found above
@@ -253,7 +259,7 @@ best_c_RBX2P <- best_c_RBX2P %>%      #Compared ____ to players in teams found a
 #Selected Team -----
 
 selected_team <- ind_stats %>%
-  filter(Player %in% c("Monte Morris", "Bradley Beal", "Kevin Durant", "Kyle Kuzma",
+  filter(Player %in% c("Monte Morris", "Bradley Beal", "Nicolas Batum", "Kyle Kuzma",
                        "Montrezl Harrell")) %>%
   select(Player:G, FG:X2Pp, FT:FTp, ORB:AST, BLK:TOV, PTS, PTS_per_game:Salary) %>%
   mutate(ATTOVR = (AST/TOV),
