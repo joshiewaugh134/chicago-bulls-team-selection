@@ -100,11 +100,11 @@ To determine the player best suited for the small forward position, the metrics 
 
 #### Centre
 
-The selection process of the final position of centres was simple, sorting above average players in blocks, rebounds and 2-Point Goal statistics. Once again, the RTPG Ratio was also used in this position. This process left 11 potential centres to choose from. `Montrezl Harrell` excells in all scoring statistics, blocking, and the RTPG Ratio, however when it comes to Rebounds, he is about average in the data pool. Despite this, at just `$6,000,000`, he is a valuable player who should be added to our team. When this player is compared to the centres in the Top 5 teams, he ranks similarly, with high levels in scoring and RTPG Ratio, and about average in rebounds
+The selection process of the final position of centres was simple, sorting above average players in blocks, rebounds and 2-Point Goal statistics. Once again, the RTPG Ratio was also used in this position. This process left 11 potential centres to choose from. `Steven Adams` excells in all relevant scoring statistics (Field Goals and 2-Point Goals), offensive and total rebounds, and the RTPG Ratio, however when it comes to blocking and obtaining defensive rebounds, he is about average in the data pool. Despite this, at just `$24,157,304`, he is a valuable player who should be added to our team. When this player is compared to the centres in the Top 5 teams, he ranks similarly, with high levels in scoring, offensive and total rebounds and RTPG Ratio, and about average in defensive rebounds and blocks.
 
 ### Recommendations for the team
 
-According to the above results, the team that should be selected is:
+According to the above results, the starting team that should be selected is:
 
 * Point Guard - Monte Morris from the Denver Nuggets at $1,349,383
 * Shooting Guard - Bradley Beal from the Washington Wizards at $25,434,262
@@ -112,7 +112,7 @@ According to the above results, the team that should be selected is:
 * Power Forward - John Collins from the Atlanta Hawks at $2,299,080
 * Centre - Steven Adams from the Oklahoma City Thunder at $24,157,304 - During training, this player should work on his ability to block using drills to improve this statistics and become a more well rounded centre.
 
-Choosing these players will cost the club \$100,000,000 and will leave \$18,000,000 to spend on other players for the squad.
+Choosing these players will cost the club \$77,240,029 and will leave \$40,759,971 to spend on other 10 remaining players for the roster This will average approximately $4,075,997, which will buy us some very valuable players, as shown in the data extrapolated during this analysis.
 
 ### References
 

@@ -189,27 +189,27 @@ pf_data %>%               #Shows spread of data according to RBX2P and Salary to
   ggplot(mapping = aes(x = RBX2P, y = (Salary/1000), colour = Player)) + 
   geom_point()
 
-#Kyle Kuzma was chosen, and compared to Top 5 in that position
+#John Collins was chosen, and compared to Top 5 in that position
 
 pf_team_stats <- team_stats2 %>%
-  select(Team:G, FGp, X2P, TRB) %>%
+  select(Team:G, FGp, X2P, ORB:TRB) %>%
   mutate(RPG = (TRB/G),
-         RBX2P = (X2P/TRB)) %>%
+         RBX2P = (ORB/X2P)) %>%
   mutate_at(vars(RPG, RBX2P), funs(round(., 3))) %>%
-  arrange(desc(RBX2P))
+  arrange(desc(RPG))
 
 best_pf_RBX2P <- ind_stats %>%           #Table shows PF players in top 5 teams for RBX2P and compared to Kyle Kuzma
-  select(Player:G, X2P, TRB, Salary) %>%
-  filter(Pos == "PF", Tm %in% c("PHO", "IND", "WAS", "SAS", "CHI")) %>%
-  mutate(RBX2P = (X2P/TRB)) %>%
+  select(Player:G, X2P, ORB:TRB, Salary) %>%
+  filter(Pos == "PF", Tm %in% c("MIL", "OKC", "POR", "PHI", "NOP")) %>%
+  mutate(RBX2P = (ORB/X2P)) %>%
   mutate_at(vars(RBX2P), funs(round(., 3)))
 
-kyle_kuzma <- pf_data %>%    
-  select(Player:G, X2P, TRB, Salary, RBX2P) %>%
-  filter(Player == "Kyle Kuzma")
+john_collins <- pf_data %>%    
+  select(Player:G, X2P, ORB:TRB, Salary, RBX2P) %>%
+  filter(Player == "John Collins")
 
 best_pf_RBX2P <- best_pf_RBX2P %>%      #Compared ____ to players in teams found above
-  rbind(kyle_kuzma) %>%
+  rbind(john_collins) %>%
   arrange(desc(RBX2P))
 
 #Centre Selection -----
@@ -233,27 +233,27 @@ c_data %>%               #Shows spread of data according to RBX2P and Salary to 
   ggplot(mapping = aes(x = RBX2P, y = (Salary/1000), colour = Player)) + 
   geom_point()
 
-##  was chosen, and compared to Top 5 in that position
+## Steven Adams was chosen, and compared to Top 5 in that position
 
 c_team_stats <- team_stats2 %>%
-  select(Team:G, FGp, X2P, TRB) %>%
+  select(Team:G, FGp, X2P, ORB:TRB) %>%
   mutate(RPG = (ORB/X2P),
          RBX2P = (X2P/TRB)) %>%
   mutate_at(vars(RPG, RBX2P), funs(round(., 3))) %>%
   arrange(desc(RBX2P))
 
 best_c_RBX2P <- ind_stats %>%           #Table shows PF players in top 5 teams for RBX2P and compared to Montrezl Harrell
-  select(Player:G, X2P, BLK, TRB, Salary) %>%
+  select(Player:G, X2P, BLK, ORB:TRB, Salary) %>%
   filter(Pos == "C", Tm %in% c("PHO", "IND", "WAS", "SAS", "CHI")) %>%
   mutate(RBX2P = (ORB/X2P)) %>%
   mutate_at(vars(RBX2P), funs(round(., 3)))
 
-montrezl_harrell <- c_data %>%    
-  select(Player:G, X2P, BLK, TRB, Salary, RBX2P) %>%
-  filter(Player == "Montrezl Harrell")
+steven_adams <- c_data %>%    
+  select(Player:G, X2P, BLK, ORB:TRB, Salary, RBX2P) %>%
+  filter(Player == "Steven Adams")
 
-best_c_RBX2P <- best_c_RBX2P %>%      #Compared ____ to players in teams found above
-  rbind(montrezl_harrell) %>%
+best_c_RBX2P <- best_c_RBX2P %>%      #Compared Steven Adams to players in teams found above
+  rbind(steven_adams) %>%
   arrange(desc(RBX2P))
 
 #Selected Team -----
