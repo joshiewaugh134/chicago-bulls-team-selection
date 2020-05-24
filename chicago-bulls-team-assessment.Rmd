@@ -30,7 +30,7 @@ pre {
 
 ### Purpose of analysis
 
-In the 2018-19 season, the Chicago Bulls placed 27th out of 30 in the NBA competition. An analysis has been conducted to determine the best starting 5 players that will play for the new season, based on a variety of statistics that were obtained in the 2018-19 season.
+In the 2018-19 season, the Chicago Bulls placed 27th out of 30 in the NBA competition. To improve on these results, an analysis has been conducted to determine the best starting 5 players that will play for the new season, based on a variety of statistics that were obtained in the 2018-19 season.
 
 ### Methods of analysis
 
@@ -47,12 +47,12 @@ There were 4 steps involved in this analysis:
 
 *Specific scoring statistics were determined further in the analysis by the use of Multi-Linear Regression shown below.
 
-3. Filtering main data set into position specific data, and further according to key metrics to identify best performing players in these metrics.
-4. Determine the player that should be signed for the starting spot in their position for the upcoming season, and compare them to the players in that position in the top 5 teams in the 2018-19 season.
+3. Filtering the main data set into position specific data, and further filtering according to key metrics to identify best performing players in these metrics.
+4. Determine the player that should be signed for the starting lineup for the upcoming season, and compare them to the players in that position in the top 5 teams in the 2018-19 season.
 
 ### Results of analysis
 
-Prior to the filtering process, the relationship between certain metrics were compared to determine the eligibility for further analysis. The first relationship was how a high Assist-to-Turnover rate can affect points scored in a game. The data used for this was the team data. 
+Prior to the filtering process, the relationship between certain metrics were compared to determine their eligibility for further analysis. The first relationship was how a high Assist-to-Turnover rate can affect points scored in a game. The data used for this was the team data. 
 
 <center>
 
@@ -72,7 +72,7 @@ Next was to determine what type of goals should be used for scoring statistics. 
 
 These graphs both indicate that a large proportion of the team's points originate from 2-Point Goals.
 
-Finally, a graph was drawn to show how frequently goals were scored after rebounds, specifically 2-Point Goals. This type of goal was chosen due to the fact that the ball would most likely been obtained in the key, thus 2-Point goals being the more frequently scored points in that zone.
+Finally, a graph was drawn to show how frequently goals were scored after rebounds, specifically 2-Point Goals. This type of goal was chosen due to the fact that the ball would most likely have been obtained in the key, thus 2-Point goals being the more frequently scored points in that zone.
 
 <center>
 
@@ -80,7 +80,7 @@ Finally, a graph was drawn to show how frequently goals were scored after reboun
 
 </center>
 
-The trend indicates that as rebounds per game, so does 2-Point goals, following the above hypothesis.
+The trend indicates that as rebounds per game increases, so does 2-Point goals, following the above hypothesis.
 
 #### Point Guard
 
@@ -100,11 +100,11 @@ To select the starting power forward player, above average power forwards were f
 
 #### Centre
 
-The selection process of the final position of centre was simple, sorting above average players in blocks, rebounds and 2-Point Goal statistics. Once again, the RTPG Ratio was also used in this position. This process left 11 potential centres to choose from. `Steven Adams` excells in all relevant scoring statistics (Field Goals = `59.5%`, 2-Point Goals = `59.6%`), rebounds (Offensive = `391`, Total = `760`), and the RTPG Ratio (`0.81`), however when it comes to blocking (`76`) and obtaining defensive rebounds (`369`), he is about average in the data pool. Despite this, at just `$24,157,304`, he is a valuable player who should be added to our team. When this player is compared to the centres in the Top 5 teams, he ranks similarly, with high levels in scoring, offensive and total rebounds and RTPG Ratio, and about average in defensive rebounds and blocks.
+The selection process of the final position of centre was simple, sorting above average players in blocks, rebounds and 2-Point Goal statistics. Once again, the RTPG Ratio was also used in this position. This process left 11 potential centres to choose from. `Steven Adams` excels in all relevant scoring statistics (Field Goals = `59.5%`, 2-Point Goals = `59.6%`), rebounds (Offensive = `391`, Total = `760`), and the RTPG Ratio (`0.81`), however when it comes to blocking (`76`) and obtaining defensive rebounds (`369`), he is about average in the data pool. Despite this, at just `$24,157,304`, he is a valuable player who should be added to our team. When this player is compared to the centres in the Top 5 teams, he ranks similarly, with high levels in scoring, offensive and total rebounds and RTPG Ratio, and about average in defensive rebounds and blocks.
 
 ### Recommendations for the team
 
-According to the above results, the starting team that should be selected is:
+Based on the above results, the starting lineup that I recommend for selection along with drills for individual improvement are below:
 
 * Point Guard - Monte Morris, Denver Nuggets ($1,349,383) - Drill to reduce turnovers - *Machine Gun Passing* (3).
 * Shooting Guard - Bradley Beal, Washington Wizards ($25,434,262) - Drill to improve 3-Point Goal Accuracy - *Partner Shooting* (4).
@@ -112,7 +112,7 @@ According to the above results, the starting team that should be selected is:
 * Power Forward - John Collins, Atlanta Hawks ($2,299,080) - 3-Point accuracy improved by *Partner Shooting*, drill to improve defensive rebound collection - *Rotation Rebounding* (5)
 * Centre - Steven Adams, Oklahoma City Thunder ($24,157,304) - Drills to improve Blocking - *React and Block* (6).
 
-Choosing these players will cost the club \$77,240,029 and will leave \$40,759,971 to spend on other 10 remaining players for the roster This will average approximately $4,075,997, which will buy us some very valuable players, as shown in the data extrapolated during this analysis.
+Choosing these players will cost the club \$77,240,029 and will leave \$40,759,971 to spend on the 10 remaining players for the upcoming season's roster. This will average approximately $4,075,997 per player, which can purchase some very valuable players, as shown in the data extrapolated during this analysis.
 
 ### References
 
