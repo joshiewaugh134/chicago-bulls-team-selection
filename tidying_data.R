@@ -11,16 +11,16 @@ team_stats2 <- read.csv("data/raw/2018-19_nba_team_statistics_2.csv")
 
 ind_stats <- rename(ind_stats,
                     FGp = 'FG.', X3Pp = 'X3P.', X2Pp = 'X2P.', eFGp = 'eFG.',
-                    FTp = 'FT.', Player = 'ï..player_name')
+                    FTp = 'FT.', Player = 'player_name')
 
 salaries <- salaries %>%
-  rename(player_id = 'ï..player_id', Player = 'player_name', Salary = 'salary') %>%
+  rename(player_id = 'player_id', Player = 'player_name', Salary = 'salary') %>%
   select(Player:Salary)
 
 salaries[,c("X","X.1","X.2", "X.3")] <- list(NULL)  # dropping blank variables at end of dataset
 
 team_stats1 <- team_stats1 %>%
-  rename(Rk = 'ï..Rk', TSp = 'TS.', eFGp = 'eFG.', TOVp = 'TOV.', ORBp = 'ORB.', DRBp = 'DRB.')
+  rename(Rk = 'Rk', TSp = 'TS.', eFGp = 'eFG.', TOVp = 'TOV.', ORBp = 'ORB.', DRBp = 'DRB.')
 
 team_stats1[,c("X","X.1","X.2")] <- list(NULL)      # dropping blank variables at end of dataset
 
